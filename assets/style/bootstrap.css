@@ -5102,17 +5102,17 @@ textarea.form-control-lg {
 .opacity-100 {
   opacity: 1 !important; }
 
-.overflow-auto {
-  overflow: auto !important; }
+.overflow-visible {
+  overflow: visible !important; }
 
 .overflow-hidden {
   overflow: hidden !important; }
 
-.overflow-visible {
-  overflow: visible !important; }
-
 .overflow-scroll {
   overflow: scroll !important; }
+
+.overflow-auto {
+  overflow: auto !important; }
 
 .d-inline {
   display: inline !important; }
@@ -5786,16 +5786,16 @@ textarea.form-control-lg {
   font-family: var(--bs-font-monospace) !important; }
 
 .fs-1 {
-  font-size: calc(1.375rem + 1.5vw) !important; }
+  font-size: 2.5rem !important; }
 
 .fs-2 {
-  font-size: calc(1.325rem + 0.9vw) !important; }
+  font-size: 2rem !important; }
 
 .fs-3 {
-  font-size: calc(1.3rem + 0.6vw) !important; }
+  font-size: 1.75rem !important; }
 
 .fs-4 {
-  font-size: calc(1.275rem + 0.3vw) !important; }
+  font-size: 1.5rem !important; }
 
 .fs-5 {
   font-size: 1.25rem !important; }
@@ -6078,6 +6078,14 @@ textarea.form-control-lg {
     float: right !important; }
   .float-sm-none {
     float: none !important; }
+  .overflow-sm-visible {
+    overflow: visible !important; }
+  .overflow-sm-hidden {
+    overflow: hidden !important; }
+  .overflow-sm-scroll {
+    overflow: scroll !important; }
+  .overflow-sm-auto {
+    overflow: auto !important; }
   .d-sm-inline {
     display: inline !important; }
   .d-sm-inline-block {
@@ -6404,6 +6412,18 @@ textarea.form-control-lg {
     padding-left: 1.5rem !important; }
   .ps-sm-5 {
     padding-left: 3rem !important; }
+  .fs-sm-1 {
+    font-size: 2.5rem !important; }
+  .fs-sm-2 {
+    font-size: 2rem !important; }
+  .fs-sm-3 {
+    font-size: 1.75rem !important; }
+  .fs-sm-4 {
+    font-size: 1.5rem !important; }
+  .fs-sm-5 {
+    font-size: 1.25rem !important; }
+  .fs-sm-6 {
+    font-size: 1rem !important; }
   .text-sm-start {
     text-align: left !important; }
   .text-sm-end {
@@ -6418,6 +6438,14 @@ textarea.form-control-lg {
     float: right !important; }
   .float-md-none {
     float: none !important; }
+  .overflow-md-visible {
+    overflow: visible !important; }
+  .overflow-md-hidden {
+    overflow: hidden !important; }
+  .overflow-md-scroll {
+    overflow: scroll !important; }
+  .overflow-md-auto {
+    overflow: auto !important; }
   .d-md-inline {
     display: inline !important; }
   .d-md-inline-block {
@@ -6744,6 +6772,18 @@ textarea.form-control-lg {
     padding-left: 1.5rem !important; }
   .ps-md-5 {
     padding-left: 3rem !important; }
+  .fs-md-1 {
+    font-size: 2.5rem !important; }
+  .fs-md-2 {
+    font-size: 2rem !important; }
+  .fs-md-3 {
+    font-size: 1.75rem !important; }
+  .fs-md-4 {
+    font-size: 1.5rem !important; }
+  .fs-md-5 {
+    font-size: 1.25rem !important; }
+  .fs-md-6 {
+    font-size: 1rem !important; }
   .text-md-start {
     text-align: left !important; }
   .text-md-end {
@@ -6758,6 +6798,14 @@ textarea.form-control-lg {
     float: right !important; }
   .float-lg-none {
     float: none !important; }
+  .overflow-lg-visible {
+    overflow: visible !important; }
+  .overflow-lg-hidden {
+    overflow: hidden !important; }
+  .overflow-lg-scroll {
+    overflow: scroll !important; }
+  .overflow-lg-auto {
+    overflow: auto !important; }
   .d-lg-inline {
     display: inline !important; }
   .d-lg-inline-block {
@@ -7084,6 +7132,18 @@ textarea.form-control-lg {
     padding-left: 1.5rem !important; }
   .ps-lg-5 {
     padding-left: 3rem !important; }
+  .fs-lg-1 {
+    font-size: 2.5rem !important; }
+  .fs-lg-2 {
+    font-size: 2rem !important; }
+  .fs-lg-3 {
+    font-size: 1.75rem !important; }
+  .fs-lg-4 {
+    font-size: 1.5rem !important; }
+  .fs-lg-5 {
+    font-size: 1.25rem !important; }
+  .fs-lg-6 {
+    font-size: 1rem !important; }
   .text-lg-start {
     text-align: left !important; }
   .text-lg-end {
@@ -7098,6 +7158,14 @@ textarea.form-control-lg {
     float: right !important; }
   .float-xl-none {
     float: none !important; }
+  .overflow-xl-visible {
+    overflow: visible !important; }
+  .overflow-xl-hidden {
+    overflow: hidden !important; }
+  .overflow-xl-scroll {
+    overflow: scroll !important; }
+  .overflow-xl-auto {
+    overflow: auto !important; }
   .d-xl-inline {
     display: inline !important; }
   .d-xl-inline-block {
@@ -7424,6 +7492,18 @@ textarea.form-control-lg {
     padding-left: 1.5rem !important; }
   .ps-xl-5 {
     padding-left: 3rem !important; }
+  .fs-xl-1 {
+    font-size: 2.5rem !important; }
+  .fs-xl-2 {
+    font-size: 2rem !important; }
+  .fs-xl-3 {
+    font-size: 1.75rem !important; }
+  .fs-xl-4 {
+    font-size: 1.5rem !important; }
+  .fs-xl-5 {
+    font-size: 1.25rem !important; }
+  .fs-xl-6 {
+    font-size: 1rem !important; }
   .text-xl-start {
     text-align: left !important; }
   .text-xl-end {
@@ -7438,6 +7518,14 @@ textarea.form-control-lg {
     float: right !important; }
   .float-xxl-none {
     float: none !important; }
+  .overflow-xxl-visible {
+    overflow: visible !important; }
+  .overflow-xxl-hidden {
+    overflow: hidden !important; }
+  .overflow-xxl-scroll {
+    overflow: scroll !important; }
+  .overflow-xxl-auto {
+    overflow: auto !important; }
   .d-xxl-inline {
     display: inline !important; }
   .d-xxl-inline-block {
@@ -7764,22 +7852,24 @@ textarea.form-control-lg {
     padding-left: 1.5rem !important; }
   .ps-xxl-5 {
     padding-left: 3rem !important; }
+  .fs-xxl-1 {
+    font-size: 2.5rem !important; }
+  .fs-xxl-2 {
+    font-size: 2rem !important; }
+  .fs-xxl-3 {
+    font-size: 1.75rem !important; }
+  .fs-xxl-4 {
+    font-size: 1.5rem !important; }
+  .fs-xxl-5 {
+    font-size: 1.25rem !important; }
+  .fs-xxl-6 {
+    font-size: 1rem !important; }
   .text-xxl-start {
     text-align: left !important; }
   .text-xxl-end {
     text-align: right !important; }
   .text-xxl-center {
     text-align: center !important; } }
-
-@media (min-width: 1200px) {
-  .fs-1 {
-    font-size: 2.5rem !important; }
-  .fs-2 {
-    font-size: 2rem !important; }
-  .fs-3 {
-    font-size: 1.75rem !important; }
-  .fs-4 {
-    font-size: 1.5rem !important; } }
 
 @media print {
   .d-print-inline {
