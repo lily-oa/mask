@@ -12271,11 +12271,12 @@ html, body {
 
 .c-loading {
   position: absolute;
-  top: 50%;
+  top: 0;
   bottom: 0;
-  right: 25%;
+  right: 0;
   left: 0;
   z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .c-loading__ring {
@@ -12292,8 +12293,8 @@ html, body {
           box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   margin: 8px;
   border: 3px solid #056ef7;
   border-radius: 50%;
