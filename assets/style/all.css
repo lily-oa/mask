@@ -12211,21 +12211,6 @@ table {
   border-spacing: 0;
 }
 
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-img, i {
-  vertical-align: middle;
-}
-
-input:focus, input :active {
-  outline: none;
-}
-
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -12245,15 +12230,9 @@ a:active {
   color: #73c0d8;
 }
 
-/* img {
+img {
   max-width: 100%;
   height: auto;
-} */
-html, body {
-  color: #333333;
-  height: 100%;
-  width: 100%;
-  font-family: 'Noto Sans TC', sans-serif;
 }
 
 /*-- pages --*/
