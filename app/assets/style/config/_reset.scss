@@ -40,35 +40,3 @@ table {
 	border-spacing: 0;
 }
 
-*, *::before, *::after{
-  box-sizing: border-box;
-}
-img, i{
-  vertical-align: middle;
-}
-input{
-  &:focus, :active{
-    outline: none;
-  }
-}
-
-
-
-* {
-  box-sizing: border-box;
-}
-html.body {
-  font-family: "Microsoft JhengHei", sans-serif;
-}
-a {
-  text-decoration: none;
-  color: #666666;
-}
-a:hover,
-a:active {
-  color: #73c0d8;
-}
-/* img {
-  max-width: 100%;
-  height: auto;
-} */
