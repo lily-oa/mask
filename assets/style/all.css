@@ -12261,7 +12261,40 @@ html, body {
   display: none;
 }
 
-/* ------loading----- */
+/*---------------------------------------------------------*/
+/* 側邊欄 */
+.p-sidebar {
+  position: absolute;
+  width: 420px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/* 地圖容器 */
+.p-map {
+  height: 100%;
+  max-width: calc(100% - 420px);
+  -webkit-transform: translateX(420px);
+      -ms-transform: translateX(420px);
+          transform: translateX(420px);
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.p-map.active {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+  max-width: 100%;
+}
+
+/* ------c-loading----- */
 .p-wrap {
   position: relative;
   overflow: hidden;
@@ -12340,37 +12373,17 @@ html, body {
   }
 }
 
-/*---------------------------------------------------------*/
-/* 側邊欄 */
-.p-sidebar {
+.c-sideButton {
   position: absolute;
-  width: 420px;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 999;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-/* 地圖容器 */
-.p-map {
-  height: 100%;
-  max-width: calc(100% - 420px);
-  -webkit-transform: translateX(420px);
-      -ms-transform: translateX(420px);
-          transform: translateX(420px);
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.p-map.active {
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
-  max-width: 100%;
+  top: 123px;
+  right: -17px;
+  height: 49px;
+  width: 17px;
+  background: url("https://albertnotes.github.io/F2E_maskMap/white_24dp.be329b3c.png") no-repeat 50%;
+  background-color: #73c0d8;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 0 10px 10px 0;
 }
 
 /*# sourceMappingURL=all.css.map */
