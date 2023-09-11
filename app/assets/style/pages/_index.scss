@@ -26,8 +26,13 @@
   max-width: 100%;
 }
 
-/* p-nav 側邊欄 */
-
+/* nav.p-nav 側邊欄 */
+.p-nav {
+  position: sticky;
+  background-color: $primary;
+  padding: 0.46875rem 0.59375rem;
+  color: #fff;
+}
 
 
 

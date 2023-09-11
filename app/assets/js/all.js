@@ -74,7 +74,7 @@ function renderList(city){
 init();
 
 //監聽 area 範圍若發生改變時將改變的值以參數方式傳給顯示網頁的函數
-document.querySelector('.area').addEventListener('change', function(e){
+document.querySelector('.p-select').addEventListener('change', function(e){
   // console.log(e.target.value);
   //此函式是將回傳值寫入網頁中(台北、台中、高雄)
   renderList(e.target.value);
