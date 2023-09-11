@@ -1,5 +1,213 @@
 @charset "UTF-8";
 /*-- bs引入檔 --*/
+.h-d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.h-flex-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.h-flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.h-flex-row-reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.h-flex-column-reverse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.h-flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.h-flex-nowrap {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.h-flex-wrap-reverse {
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+}
+
+.h-flex-1 {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 0%;
+      flex-basis: 0%;
+}
+
+.h-flex-grow-0 {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+.h-flex-grow-1 {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.h-flex-shrink-0 {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.h-flex-shrink-1 {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
+
+.h-justify-content-start {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.h-justify-content-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.h-justify-content-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.h-justify-content-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.h-justify-content-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.h-align-items-start {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.h-align-items-end {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.h-align-items-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.h-align-items-baseline {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.h-align-items-stretch {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.h-align-content-start {
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+}
+
+.h-align-content-end {
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+}
+
+.h-align-content-center {
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.h-align-content-between {
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.h-align-content-around {
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+.h-align-content-stretch {
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+
+.h-align-self-auto {
+  -ms-flex-item-align: auto;
+      align-self: auto;
+}
+
+.h-align-self-start {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.h-align-self-end {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.h-align-self-center {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.h-align-self-baseline {
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.h-align-self-stretch {
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+}
+
+.h-text-right {
+  text-align: right;
+}
+
+.h-mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 /*!
  * Bootstrap v5.1.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -151,7 +359,7 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 p {
@@ -8870,7 +9078,7 @@ fieldset:disabled .btn {
 }
 
 .fs-6 {
-  font-size: 1rem !important;
+  font-size: 0.75rem !important;
 }
 
 .fst-italic {
@@ -9828,7 +10036,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem !important;
   }
   .fs-sm-6 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
   }
   .text-sm-start {
     text-align: left !important;
@@ -10431,7 +10639,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem !important;
   }
   .fs-md-6 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
   }
   .text-md-start {
     text-align: left !important;
@@ -11034,7 +11242,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem !important;
   }
   .fs-lg-6 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
   }
   .text-lg-start {
     text-align: left !important;
@@ -11637,7 +11845,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem !important;
   }
   .fs-xl-6 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
   }
   .text-xl-start {
     text-align: left !important;
@@ -12240,7 +12448,7 @@ fieldset:disabled .btn {
     font-size: 1.25rem !important;
   }
   .fs-xxl-6 {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
   }
   .text-xxl-start {
     text-align: left !important;
@@ -12419,7 +12627,15 @@ html, body {
   max-width: 100%;
 }
 
-/* p-nav 側邊欄 */
+/* nav.p-nav 側邊欄 */
+.p-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #73c0d8;
+  padding: 0.46875rem 0.59375rem;
+  color: #fff;
+}
+
 /* ------c-loading----- */
 .p-wrap {
   position: relative;
