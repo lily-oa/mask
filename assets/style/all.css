@@ -12636,6 +12636,11 @@ html, body {
   color: #fff;
 }
 
+/* 身份證碼的顏色 */
+.wordColor {
+  color: #faf900;
+}
+
 /* ------c-loading----- */
 .p-wrap {
   position: relative;
