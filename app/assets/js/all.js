@@ -24,7 +24,7 @@ function renderDayVids(){
   //month是從 0 開始，所以要加 1 
   const _month = (_date.getMonth()+1);
   const _day = _date.getDate();
-  document.querySelector('.vids').textContent =`${_year}-0${_month}-${_day}`;
+  document.querySelector('.vids').textContent =`${_year}-${_month}-${_day}`;
 }
 
 //初始化，當網頁一開始載入時會先執行
