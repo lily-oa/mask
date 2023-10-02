@@ -29,7 +29,7 @@ function renderDayVids() {
 
   var _day = _date.getDate();
 
-  document.querySelector('.vids').textContent = "".concat(_year, "-0").concat(_month, "-").concat(_day);
+  document.querySelector('.vids').textContent = "".concat(_year, "-").concat(_month, "-").concat(_day);
 } //初始化，當網頁一開始載入時會先執行
 
 
