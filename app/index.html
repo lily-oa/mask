@@ -16,8 +16,13 @@ current: index
     </div>
   </div>
 
-  <div class="p-sidebar">
-    <a class="c-sideButton" id="sideData" href="#"></a>
+  <!--畫布按鈕-->
+  <div class="bd">
+    <a class="c-sideButton" id="sideData" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample"></a>
+  </div>
+  
+  <!--側邊欄-->
+  <div class="p-sidebar" id="offcanvasExample">
     <nav class="p-nav">
       <div class="h-d-flex">
         <h1 class="fs-2 flex-grow-1" id="week">星期
@@ -29,9 +34,9 @@ current: index
             <sapn class="fs-sm-6 vids"></sapn>
           </p>
           <div class="h-text-right">
-            <p class="odd">身份證末碼 1,3,5,7,9 可以購買</p>
+            <p class="odd">身份證末碼 <span class="text-warning">1,3,5,7,9</span> 可以購買</p>
             <p class="sunday">現在不能買口罩</p>
-            <p class="even">身份證末碼 2,4,6,8,0 可以購買</p>
+            <p class="even">身份證末碼 <span class="text-warning">2,4,6,8,0</span> 可以購買</p>
           </div>
         </div>
       </div>
