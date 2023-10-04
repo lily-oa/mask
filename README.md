@@ -2,4 +2,4 @@
 
 repo: https://github.com/lily-oa/mask
 
-page: 
+page: https://lily-oa.github.io/mask/
