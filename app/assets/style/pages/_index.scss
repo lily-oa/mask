@@ -1,3 +1,10 @@
+.p-wrap{
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
 .odd, .even, .sunday{
   display: none;
 }
@@ -6,33 +13,46 @@
 /* 側邊欄 */
 .p-sidebar{
   position: absolute;
-  width: 420px;
+  width: calc(100% / 4);
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 999;
   transition: all 0.5s;
+  &.p-sidebarContainer{
+    overflow-y: auto;
+    background-color: #fff;
+    
+  }
+}
+
+.content{
+  width: 75%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  overflow-y: hidden;
+  display: block;
 }
 
 /* 地圖容器 */
 .p-map{
   height: 100%;
-  max-width: calc(100% - 420px);
-  transform: translateX(420px);
-  transition: all 0.5s;
+  width: 100%;
 }
 .p-map.active{
   transform: translateX(0);
   max-width: 100%;
 }
 
-/* nav.p-nav 側邊欄 */
+/* nav.p-nav 側邊欄上方 */
 .p-nav {
   position: sticky;
   background-color: $primary;
   padding: 0.46875rem 0.59375rem;
   color: #fff;
 }
+
 
 /* 身份證碼的顏色 */
 .wordColor {
