@@ -12590,6 +12590,13 @@ html, body {
 }
 
 /*-- pages --*/
+.p-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
 .odd, .even, .sunday {
   display: none;
 }
@@ -12598,7 +12605,7 @@ html, body {
 /* 側邊欄 */
 .p-sidebar {
   position: absolute;
-  width: 420px;
+  width: calc(100% / 4);
   top: 0;
   left: 0;
   bottom: 0;
@@ -12608,16 +12615,24 @@ html, body {
   transition: all 0.5s;
 }
 
+.p-sidebar.p-sidebarContainer {
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.content {
+  width: 75%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  overflow-y: hidden;
+  display: block;
+}
+
 /* 地圖容器 */
 .p-map {
   height: 100%;
-  max-width: calc(100% - 420px);
-  -webkit-transform: translateX(420px);
-      -ms-transform: translateX(420px);
-          transform: translateX(420px);
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  width: 100%;
 }
 
 .p-map.active {
@@ -12627,7 +12642,7 @@ html, body {
   max-width: 100%;
 }
 
-/* nav.p-nav 側邊欄 */
+/* nav.p-nav 側邊欄上方 */
 .p-nav {
   position: -webkit-sticky;
   position: sticky;
@@ -12642,13 +12657,6 @@ html, body {
 }
 
 /* ------c-loading----- */
-.p-wrap {
-  position: relative;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-}
-
 .c-loading {
   position: absolute;
   top: 0;
@@ -12722,13 +12730,12 @@ html, body {
 
 .bd {
   position: relative;
-  border: red 5px solid;
 }
 
 .c-sideButton {
   position: absolute;
-  top: 123px;
-  left: 410px;
+  top: 90px;
+  right: -17px;
   height: 49px;
   width: 17px;
   background: url("../images/sideButtonIcon.png") no-repeat 50%;
