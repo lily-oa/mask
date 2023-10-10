@@ -5,9 +5,22 @@
   right: -17px;
   height: 49px;
   width: 17px;
-  background: url('../images/sideButtonIcon.png') no-repeat 50%;
+  //background: url('../images/sideButtonIcon.png') no-repeat 50%;
   background-color: #73c0d8;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   border-radius: 0 10px 10px 0;
 }
 
+.p-sidebar > .c-sideButton > i{
+  color: #fff;
+  cursor: pointer;
+}
+
+.fa, .fas{
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
