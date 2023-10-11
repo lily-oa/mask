@@ -97,26 +97,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 //-----------------------------------------------
 // 畫布按鈕開關 
-// $('.fa-angle-right').hide();
-// $('.fa-angle-left').click(function() {
-//   $('.p-sidebar').animate({ left: '-25%'}, 100)
-//   $('.content').css({
-//     width: '100%'
-//   })
-//   $('.fa-angle-right').show();
-//   $('.fa-angle-left').hide();
-// })
-
-// $('.fa-angle-right').click(function(){
-//   $('.p-sideBar').animate({ left: '0'}, 100, function(){
-//     $('.content').css({
-//       width: '75%'
-//     })
-//   });
-//   $('.fa-angle-right').hide();
-//   $('.fa-angle-left').show();
-// })
-
 $('.fa-angle-right').hide();
 $('.fa-angle-left').click(function () {
     $('.p-sidebar').animate({ left: "-25%"}, 100)
