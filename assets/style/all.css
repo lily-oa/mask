@@ -12605,7 +12605,7 @@ html, body {
 /* 側邊欄 */
 .p-sidebar {
   position: absolute;
-  width: calc(100% / 4);
+  width: calc(90%);
   top: 0;
   left: 0;
   bottom: 0;
@@ -12615,9 +12615,22 @@ html, body {
   transition: all 0.5s;
 }
 
-.p-sidebar.p-sidebarContainer {
-  overflow-y: auto;
-  background-color: #fff;
+@media (min-width: 768px) {
+  .p-sidebar {
+    width: calc(50%);
+  }
+}
+
+@media (min-width: 992px) {
+  .p-sidebar {
+    width: calc(40%);
+  }
+}
+
+@media (min-width: 1140px) {
+  .p-sidebar {
+    width: calc(35%);
+  }
 }
 
 .content {
@@ -12732,7 +12745,7 @@ html, body {
   position: absolute;
   top: 9.5%;
   left: 100%;
-  height: 5%;
+  height: 8%;
   width: 7%;
   background-color: #73c0d8;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
