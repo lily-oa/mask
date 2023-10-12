@@ -13,16 +13,20 @@
 /* 側邊欄 */
 .p-sidebar{
   position: absolute;
-  width: calc(100% / 4);
+  width: calc(90%);
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 999;
   transition: all 0.5s;
-  &.p-sidebarContainer{
-    overflow-y: auto;
-    background-color: #fff;
-    
+  @media (min-width: 768px) {
+    width: calc(50%);
+  }
+  @media (min-width: 992px) {
+    width: calc(40%);
+  }
+  @media (min-width: 1140px) {
+    width: calc(35%);
   }
 }
 
@@ -58,3 +62,8 @@
 .wordColor {
   color:#faf900;
 }
+
+
+// .p-sideContent {
+//   background-color: #fff;
+// }
