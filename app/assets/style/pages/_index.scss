@@ -11,27 +11,47 @@
 /*---------------------------------------------------------*/
 
 /* 側邊欄 */
+// .p-sidebar{
+//   position: absolute;
+//   width: calc(90%);
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   z-index: 999;
+//   transition: all 0.5s;
+//   @media (min-width: 768px) {
+//     width: calc(100% / 4);
+//   }
+// }
+//---------------------------------------------
 .p-sidebar{
   position: absolute;
-  width: calc(90%);
+  width: 80%;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 999;
   transition: all 0.5s;
   @media (min-width: 768px) {
-    width: calc(50%);
+    width: 60%;
   }
   @media (min-width: 992px) {
-    width: calc(40%);
+    width: 40%;
   }
-  @media (min-width: 1140px) {
-    width: calc(35%);
+  @media (min-width: 1024px) {
+    width: 30%;
   }
 }
 
+
+
+
+
+
+
+
+//------------------------------------------
 .content{
-  width: 75%;
   height: 100%;
   position: absolute;
   right: 0;
