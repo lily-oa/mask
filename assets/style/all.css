@@ -12601,7 +12601,6 @@ html, body {
   display: none;
 }
 
-/*---------------------------------------------------------*/
 /* 側邊欄 */
 .p-sidebar {
   position: absolute;
@@ -12630,6 +12629,28 @@ html, body {
 @media (min-width: 1024px) {
   .p-sidebar {
     width: 30%;
+  }
+}
+
+.panelClose {
+  margin-left: -80%;
+}
+
+@media (min-width: 768px) {
+  .panelClose {
+    margin-left: -60%;
+  }
+}
+
+@media (min-width: 992px) {
+  .panelClose {
+    margin-left: -40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .panelClose {
+    margin-left: -30%;
   }
 }
 
@@ -12746,6 +12767,7 @@ html, body {
   left: 100%;
   height: 8%;
   width: 7%;
+  background: url("../images/sideButtonIcon.png") no-repeat 50%;
   background-color: #73c0d8;
   -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);

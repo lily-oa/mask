@@ -93,47 +93,13 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mapId); //-----------------------------------------------
 // 畫布按鈕開關 
-// $('.fa-angle-right').hide();
-// $('.fa-angle-left').click(function () {
-//     $('.p-sidebar').animate({ left: "-25%"}, 100)
-//     $('.content').css({
-//         width: "100%"
-//     })
-//     $('.fa-angle-right').show();
-//     $('.fa-angle-left').hide();
-// })
-// $('.fa-angle-right').click(function () {
-//     $('.p-sidebar').animate({ left: "0"}, 100, function() {
-//         $('.content').css({
-//             width: "75%"
-//         })
-//     });
-//     $('.fa-angle-right').hide();
-//     $('.fa-angle-left').show();
-// })
 
-$('.fa-angle-right').hide();
-$('.fa-angle-left').click(function () {
-  $('.p-sidebar').animate({
-    left: "-30%"
-  }, 100);
-  $('.content').css({
-    width: "100%"
-  });
-  $('.fa-angle-right').show();
-  $('.fa-angle-left').hide();
-});
-$('.fa-angle-right').click(function () {
-  $('.p-sidebar').animate({
-    left: "0"
-  }, 100, function () {
-    $('.content').css({
-      width: "75%"
-    });
-  });
-  $('.fa-angle-right').hide();
-  $('.fa-angle-left').show();
-});
+var toggle = document.querySelector('.c-sideButton');
+var Psidebar = document.querySelector('.p-sidebar');
+
+toggle.onclick = function (e) {
+  Psidebar.classList.toggle('panelClose');
+}; //--------------------------------------------------
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
