@@ -8,22 +8,9 @@
 .odd, .even, .sunday{
   display: none;
 }
-/*---------------------------------------------------------*/
 
-/* 側邊欄 */
-// .p-sidebar{
-//   position: absolute;
-//   width: calc(90%);
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   z-index: 999;
-//   transition: all 0.5s;
-//   @media (min-width: 768px) {
-//     width: calc(100% / 4);
-//   }
-// }
 //---------------------------------------------
+/* 側邊欄 */
 .p-sidebar{
   position: absolute;
   width: 80%;
@@ -43,12 +30,27 @@
   }
 }
 
+.panelClose{
+  margin-left: -80%;
+}
 
+@media (min-width: 768px) {
+  .panelClose{
+    margin-left: -60%;
+  }
+}
 
+@media (min-width: 992px) {
+  .panelClose{
+    margin-left: -40%;
+  }
+}
 
-
-
-
+@media (min-width: 1024px) {
+  .panelClose{
+    margin-left: -30%;
+  }
+}
 
 //------------------------------------------
 .content{
@@ -82,8 +84,3 @@
 .wordColor {
   color:#faf900;
 }
-
-
-// .p-sideContent {
-//   background-color: #fff;
-// }

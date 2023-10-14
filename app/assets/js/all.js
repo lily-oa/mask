@@ -97,49 +97,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 //-----------------------------------------------
 // 畫布按鈕開關 
-// $('.fa-angle-right').hide();
-// $('.fa-angle-left').click(function () {
-//     $('.p-sidebar').animate({ left: "-25%"}, 100)
-//     $('.content').css({
-//         width: "100%"
-//     })
-//     $('.fa-angle-right').show();
-//     $('.fa-angle-left').hide();
-// })
-// $('.fa-angle-right').click(function () {
-//     $('.p-sidebar').animate({ left: "0"}, 100, function() {
-//         $('.content').css({
-//             width: "75%"
-//         })
-//     });
-//     $('.fa-angle-right').hide();
-//     $('.fa-angle-left').show();
-// })
 
+let toggle = document.querySelector('.c-sideButton');
+const Psidebar = document.querySelector('.p-sidebar');
 
-  $('.fa-angle-right').hide();
-  $('.fa-angle-left').click(function () {
-    $('.p-sidebar').animate({
-      left: "-30%"
-    }, 100)
-    $('.content').css({
-      width: "100%"
-    })
-    $('.fa-angle-right').show();
-    $('.fa-angle-left').hide();
-  })
+toggle.onclick = function(e){
+  Psidebar.classList.toggle('panelClose');
+}
 
-
-  $('.fa-angle-right').click(function () {
-    $('.p-sidebar').animate({
-      left: "0"
-    }, 100, function () {
-      $('.content').css({
-        width: "75%"
-      })
-    });
-    $('.fa-angle-right').hide();
-    $('.fa-angle-left').show();
-  })
-
-
+//--------------------------------------------------
