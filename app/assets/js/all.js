@@ -3,35 +3,34 @@ document.write('<img>');
 
 //判斷日期(顯示星期幾)
 function renderDay(){
-  const _date = new Date();
-  const _day = _date.getDay();
-  document.querySelector('.demo').textContent = _day;
+  const num = Date.now();
+  let dd = new Date(num);
+  let weekdays = '日,一,二,三,四,五,六'.split(',');
+  let nowWeekday = weekdays[dd.getDay()];
+  document.querySelector('.demo').textContent = nowWeekday;
 
   //判斷基數 or 偶數並顯示可否購買
-  if(_day == 1 || _day == 3 || _day == 5){
+  if(nowWeekday == '一' || nowWeekday == '三' || nowWeekday == '五'){
     document.querySelector('.odd').style.display = 'block';
-  }else if((_day == 2 || _day == 4 || _day == 6)){
+  }else if((nowWeekday == '二' || nowWeekday == '四' || nowWeekday == '六')){
     document.querySelector('.even').style.display = 'block';
   }else{
     document.querySelector('.sunday').style.display = 'block';
   }
-}
 
 // 顯示出西元年月日
 function renderDayVids(){
-  const _date = new Date();
-  const _year = _date.getFullYear();
-  //month是從 0 開始，所以要加 1 
-  const _month = (_date.getMonth()+1);
-  const _day = _date.getDate();
-  document.querySelector('.vids').textContent =`${_year}-${_month}-${_day}`;
-}
-
+  let Y = dd.getFullYear() + ' - ';
+    //month是從 0 開始，所以要加 1 
+    let M = (dd.getMonth()+1 < 10 ? '0' + (dd.getMonth()+1) : dd.getMonth() + 1) + ' - ' ;
+    let D = dd.getDay() + '';
+    document.querySelector('.vids').textContent = Y + M + D;
+  }
+} 
 //初始化，當網頁一開始載入時會先執行
 function init(){
   //執行函式
   renderDay();
-  renderDayVids();
   getData();
 }
 
