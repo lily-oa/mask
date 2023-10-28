@@ -12516,7 +12516,7 @@ time, mark, .mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
+  vertical-align: initial;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -12724,14 +12724,14 @@ html, body {
   color: #fff;
 }
 
-.p-nav.p-select {
+.p-nav .p-select {
   font-size: 0.875rem;
   height: 31px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   border: none;
-  padding: 0 15px;
+  padding: 0px 15px;
   border-radius: 20px;
   -webkit-appearance: none;
      -moz-appearance: none;

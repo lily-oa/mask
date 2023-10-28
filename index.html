@@ -48,7 +48,7 @@
     </a>
 
     <nav class="p-nav">
-      <div class="h-d-flex">
+      <div class="h-d-flex align-items-end">
         <h1 class="fs-3 flex-grow-1" id="week">星期
           <sapn class="demo"></sapn>
         </h1>
@@ -65,17 +65,18 @@
         </div>
       </div>
       <!--選擇特定地區-->
-      <div>
-        <select class="p-select flex-grow-1">
+      <div class="h-d-flex mb-2 mt-2">
+        <select class="p-select h-flex-1" name="county" id="country">
           <option value="臺北市">臺北市</option>
           <option value="臺中市">臺中市</option>
           <option value="高雄市">高雄市</option>
         </select>
-        <select class="p-select" name="" id=""></select>
+        <select class="p-select ms-2" name="countyTown" id="county">
+          <option value="全部地區">全部地區</option>
+        </select>
       </div>
       <div></div>
     </nav>
-
     <div class="p-sideContent">
     <!--顯示口罩地區的詳細資料-->
       <ul class="list">
