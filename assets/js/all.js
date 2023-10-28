@@ -1,6 +1,6 @@
 "use strict";
 
-document.write('<img>'); //判斷日期(顯示星期幾)
+document.write('<img>'); //判斷日期(顯示星期幾)，並讓它呈現國字的樣式
 
 function renderDay() {
   var num = Date.now();
@@ -18,13 +18,11 @@ function renderDay() {
   } // 顯示出西元年月日
 
 
-  function renderDayVids() {
-    var Y = dd.getFullYear() + ' - '; //month是從 0 開始，所以要加 1 
+  var Y = dd.getFullYear() + ' - '; //month是從 0 開始，所以要加 1 
 
-    var M = (dd.getMonth() + 1 < 10 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1) + ' - ';
-    var D = dd.getDay() + '';
-    document.querySelector('.vids').textContent = Y + M + D;
-  }
+  var M = (dd.getMonth() + 1 < 10 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1) + ' - ';
+  var D = dd.getDay() + '';
+  document.querySelector('.vids').textContent = Y + M + D;
 } //初始化，當網頁一開始載入時會先執行
 
 
