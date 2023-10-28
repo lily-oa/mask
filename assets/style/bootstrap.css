@@ -233,7 +233,7 @@ h4, .h4 {
       font-size: 1.5rem; } }
 
 h5, .h5 {
-  font-size: 1.25rem; }
+  font-size: 1rem; }
 
 h6, .h6 {
   font-size: 0.75rem; }
@@ -5988,7 +5988,7 @@ textarea.form-control-lg {
   font-size: 1.5rem !important; }
 
 .fs-5 {
-  font-size: 1.25rem !important; }
+  font-size: 1rem !important; }
 
 .fs-6 {
   font-size: 0.75rem !important; }
@@ -6619,7 +6619,7 @@ textarea.form-control-lg {
   .fs-sm-4 {
     font-size: 1.5rem !important; }
   .fs-sm-5 {
-    font-size: 1.25rem !important; }
+    font-size: 1rem !important; }
   .fs-sm-6 {
     font-size: 0.75rem !important; }
   .text-sm-start {
@@ -6979,7 +6979,7 @@ textarea.form-control-lg {
   .fs-md-4 {
     font-size: 1.5rem !important; }
   .fs-md-5 {
-    font-size: 1.25rem !important; }
+    font-size: 1rem !important; }
   .fs-md-6 {
     font-size: 0.75rem !important; }
   .text-md-start {
@@ -7339,7 +7339,7 @@ textarea.form-control-lg {
   .fs-lg-4 {
     font-size: 1.5rem !important; }
   .fs-lg-5 {
-    font-size: 1.25rem !important; }
+    font-size: 1rem !important; }
   .fs-lg-6 {
     font-size: 0.75rem !important; }
   .text-lg-start {
@@ -7699,7 +7699,7 @@ textarea.form-control-lg {
   .fs-xl-4 {
     font-size: 1.5rem !important; }
   .fs-xl-5 {
-    font-size: 1.25rem !important; }
+    font-size: 1rem !important; }
   .fs-xl-6 {
     font-size: 0.75rem !important; }
   .text-xl-start {
@@ -8059,7 +8059,7 @@ textarea.form-control-lg {
   .fs-xxl-4 {
     font-size: 1.5rem !important; }
   .fs-xxl-5 {
-    font-size: 1.25rem !important; }
+    font-size: 1rem !important; }
   .fs-xxl-6 {
     font-size: 0.75rem !important; }
   .text-xxl-start {

@@ -21,7 +21,7 @@ function renderDay() {
   var Y = dd.getFullYear() + ' - '; //month是從 0 開始，所以要加 1 
 
   var M = (dd.getMonth() + 1 < 10 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1) + ' - ';
-  var D = dd.getDay() + '';
+  var D = dd.getDate() + '';
   document.querySelector('.vids').textContent = Y + M + D;
 } //初始化，當網頁一開始載入時會先執行
 
@@ -59,7 +59,7 @@ function renderList(city) {
   for (var i = 0; ary.length > i; i++) {
     //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
     if (ary[i].properties.county == city) {
-      str += "<li>".concat(ary[i].properties.county, " : ").concat(ary[i].properties.name, "\uFF0C\u6210\u4EBA\u53E3\u7F69 : ").concat(ary[i].properties.mask_adult, "\u500B\uFF0C\n      \u5152\u7AE5\u53E3\u7F69 : ").concat(ary[i].properties.mask_child, "\u500B</li>");
+      str += "\n              <li class=\"card\">\n                <div class=\"card-body\">\n                  <h3 class=\"card-title\">".concat(ary[i].properties.name, "</h3>\n                  <p class='card-text'>").concat(ary[i].properties.address, "</p>\n                  <p>").concat(ary[i].properties.phone, "</p>\n                  <div class=\"d-flex mt-2\">\n                    <span class=\"h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5\">\u6210\u4EBA\u53E3\u7F69 ").concat(ary[i].properties.mask_adult, " \u500B</span>\n                    <span class=\"h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5\">\u5152\u7AE5\u53E3\u7F69 ").concat(ary[i].properties.mask_child, " \u500B</span>\n                  </div>\n                </div>\n              </li>\n            ");
     }
   }
 

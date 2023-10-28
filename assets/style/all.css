@@ -356,7 +356,7 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 h6, .h6 {
@@ -9075,7 +9075,7 @@ fieldset:disabled .btn {
 }
 
 .fs-5 {
-  font-size: 1.25rem !important;
+  font-size: 1rem !important;
 }
 
 .fs-6 {
@@ -10034,7 +10034,7 @@ fieldset:disabled .btn {
     font-size: 1.5rem !important;
   }
   .fs-sm-5 {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
   }
   .fs-sm-6 {
     font-size: 0.75rem !important;
@@ -10637,7 +10637,7 @@ fieldset:disabled .btn {
     font-size: 1.5rem !important;
   }
   .fs-md-5 {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
   }
   .fs-md-6 {
     font-size: 0.75rem !important;
@@ -11240,7 +11240,7 @@ fieldset:disabled .btn {
     font-size: 1.5rem !important;
   }
   .fs-lg-5 {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
   }
   .fs-lg-6 {
     font-size: 0.75rem !important;
@@ -11843,7 +11843,7 @@ fieldset:disabled .btn {
     font-size: 1.5rem !important;
   }
   .fs-xl-5 {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
   }
   .fs-xl-6 {
     font-size: 0.75rem !important;
@@ -12446,7 +12446,7 @@ fieldset:disabled .btn {
     font-size: 1.5rem !important;
   }
   .fs-xxl-5 {
-    font-size: 1.25rem !important;
+    font-size: 1rem !important;
   }
   .fs-xxl-6 {
     font-size: 0.75rem !important;
@@ -12579,10 +12579,6 @@ a:active {
   color: #73c0d8;
 }
 
-/* img {
-  max-width: 100%;
-  height: auto;
-} */
 html, body {
   color: #333333;
   height: 100%;
@@ -12610,15 +12606,15 @@ html, body {
 }
 
 .h4, h4, .h4 {
-  font-size: 18px;
-}
-
-.h5, h5, .h5 {
   font-size: 15px;
 }
 
+.h5, h5, .h5 {
+  font-size: 10.2px;
+}
+
 .h6, h6, .h6 {
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .small-text-1 {
@@ -12666,12 +12662,6 @@ html, body {
   }
 }
 
-@media (min-width: 1024px) {
-  .p-sidebar {
-    width: 30%;
-  }
-}
-
 .panelClose {
   margin-left: -80%;
 }
@@ -12685,12 +12675,6 @@ html, body {
 @media (min-width: 992px) {
   .panelClose {
     margin-left: -40%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .panelClose {
-    margin-left: -30%;
   }
 }
 
@@ -12744,6 +12728,33 @@ html, body {
 /* 身份證碼的顏色 */
 .wordColor {
   color: #faf900;
+}
+
+/* 搜尋 */
+.c-shrinkIcon {
+  position: relative;
+}
+
+.c-shirnkIcon__input {
+  font-size: 0.875rem;
+  height: 31px;
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  padding-left: 10px;
+  padding-right: 35px;
+  border-radius: 20px;
+}
+
+.c-shirnkIcon__icon {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 1.2rem;
+  color: #a5a5a5;
+  width: 30px;
+  padding: 6px 0;
+  text-align: center;
 }
 
 /* ------c-loading----- */
@@ -12853,6 +12864,18 @@ html, body {
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
+}
+
+/* 卡片 p-card */
+.p-sideContent {
+  height: calc(100% - 123px);
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.p-sideContent .p-card {
+  padding: 0.9375rem 0.75rem;
+  border-bottom: 1px solid #d9d9d9;
 }
 
 /*# sourceMappingURL=all.css.map */
