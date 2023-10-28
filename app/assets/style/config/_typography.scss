@@ -12,9 +12,9 @@ $theme-fonts: (
   h1: $font-size-base * 2.5,
   h2: $font-size-base * 2,
   h3: $font-size-base * 1.75,
-  h4: $font-size-base * 1.5,
-  h5: $font-size-base * 1.25,
-  h6: $font-size-base,
+  h4: $font-size-base * 1.25,
+  h5: $font-size-base * 0.85,
+  h6: $font-size-base * 0.75,
 );
 
 $font-small-size:(

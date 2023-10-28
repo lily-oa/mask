@@ -31,12 +31,12 @@ current: index
         <div>
           <!--年月日-->
           <p class="h-text-right h-mb-1" id="date">
-            <sapn class="h6 vids"></sapn>
+            <sapn class="h5 vids"></sapn>
           </p>
           <div class="h-text-right">
-            <p class="odd h6">身份證末碼 <span class="text-warning">1,3,5,7,9</span> 可以購買</p>
-            <p class="sunday h6">現在不能買口罩</p>
-            <p class="even h6">身份證末碼 <span class="text-warning h5">2,4,6,8,0</span> 可以購買</p>
+            <p class="odd h5">身份證末碼 <span class="text-warning h4">1,3,5,7,9</span> 可以購買</p>
+            <p class="sunday h4 text-danger">現在不能買口罩</p>
+            <p class="even h5">身份證末碼 <span class="text-warning h4">2,4,6,8,0</span> 可以購買</p>
           </div>
         </div>
       </div>
@@ -51,10 +51,13 @@ current: index
           <option value="全部地區">全部地區</option>
         </select>
       </div>
-      <div></div>
+      <div class="c-shrinkIcon mb-1" id="search">
+        <input class="c-shirnkIcon__input" type="text" id="searchText" name="search" placeholder="搜尋地址.....">
+        <a class="c-shirnkIcon__icon fas fa-search" href="#"></a>
+      </div>
     </nav>
-    <div class="p-sideContent">
     <!--顯示口罩地區的詳細資料-->
+    <div class="p-sideContent" id="sideDate">
       <ul class="list">
 
       </ul>

@@ -1,0 +1,10 @@
+/* 卡片 p-card */
+.p-sideContent{
+  height: calc(100% - 123px);
+  overflow-y: auto;
+  background-color: #fff;
+  .p-card{
+    padding: 0.9375rem 0.75rem;
+    border-bottom: 1px solid #d9d9d9;
+  }
+}

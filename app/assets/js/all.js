@@ -22,7 +22,7 @@ function renderDay() {
   let Y = dd.getFullYear() + ' - ';
   //month是從 0 開始，所以要加 1 
   let M = (dd.getMonth() + 1 < 10 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1) + ' - ';
-  let D = dd.getDay() + '';
+  let D = dd.getDate() + '';
   document.querySelector('.vids').textContent = Y + M + D;
 }
 
@@ -62,8 +62,19 @@ function renderList(city){
   for(let i = 0; ary.length>i ; i++){
     //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
     if(ary[i].properties.county == city){
-      str += `<li>${ary[i].properties.county} : ${ary[i].properties.name}，成人口罩 : ${ary[i].properties.mask_adult}個，
-      兒童口罩 : ${ary[i].properties.mask_child}個</li>`
+      str += `
+              <li class="card">
+                <div class="card-body">
+                  <h3 class="card-title">${ary[i].properties.name}</h3>
+                  <p class='card-text'>${ary[i].properties.address}</p>
+                  <p>${ary[i].properties.phone}</p>
+                  <div class="d-flex mt-2">
+                    <span class="h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5">成人口罩 ${ary[i].properties.mask_adult} 個</span>
+                    <span class="h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5">兒童口罩 ${ary[i].properties.mask_child} 個</span>
+                  </div>
+                </div>
+              </li>
+            `
     }
   }
   document.querySelector('.list').innerHTML = str;
