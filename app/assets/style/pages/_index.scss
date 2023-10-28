@@ -77,12 +77,12 @@
   background-color: $primary;
   padding: 0.46875rem 0.59375rem;
   color: #fff;
-  &.p-select{
+  .p-select{
     font-size: 0.875rem;
     height: 31px;
-    flex:1;
+    flex: 1;
     border: none;
-    padding: 0 15px;
+    padding:0px 15px;
     border-radius: 20px;
     appearance: none;
     background: #fff url('https://albertnotes.github.io/F2E_maskMap/black_18dp.b6e2e16b.png') no-repeat 95%;
