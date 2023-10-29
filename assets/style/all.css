@@ -12662,6 +12662,18 @@ html, body {
   }
 }
 
+@media (min-width: 1024px) {
+  .p-sidebar {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .p-sidebar {
+    width: 30%;
+  }
+}
+
 .panelClose {
   margin-left: -80%;
 }
@@ -12675,6 +12687,18 @@ html, body {
 @media (min-width: 992px) {
   .panelClose {
     margin-left: -40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .panelClose {
+    margin-left: -35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .panelClose {
+    margin-left: -30%;
   }
 }
 

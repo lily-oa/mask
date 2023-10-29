@@ -27,7 +27,6 @@ function renderDay() {
 
 
 function init() {
-  //執行函式
   renderDay();
   getData();
 } //設定一個放資料的全域變數
