@@ -28,7 +28,6 @@ function renderDay() {
 
 //初始化，當網頁一開始載入時會先執行
 function init(){
-  //執行函式
   renderDay();
   getData();
 }
