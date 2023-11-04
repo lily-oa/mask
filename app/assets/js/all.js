@@ -92,7 +92,7 @@ document.querySelector('.p-select').addEventListener('change', function(e){
 // 地圖 map
 // 設定一個地圖，把這地圖定位在 #mapId，
 // 先定位 center 座標，zoom 定位 16，zoom:縮放等級
-var mapId = L.map('mapId', {
+const mapId = L.map('mapId', {
   center: [25.04828, 121.51435],
   zoom: 16
 });
@@ -102,6 +102,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mapId);
 
+// 紫色Icon(沒有任何定位)
+const voiletIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shoadowSize: [41, 41]
+});
 
 //-----------------------------------------------
 // 畫布按鈕開關 
