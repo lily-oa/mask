@@ -82,16 +82,57 @@ var mapId = L.map('mapId', {
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mapId); // 紫色Icon(沒有任何定位)
+}).addTo(mapId); // 紫色Icon(頁面載入時，沒有指定任何定位)
 
-var voiletIcon = new L.Icon({
+var violetIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shoadowSize: [41, 41]
-}); //-----------------------------------------------
+});
+var marker = L.marker([0, 0], {
+  icon: violetIcon
+}).addTo(mapId); //定位使用者位置
+
+if ('geolacation' in navigator) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
+    map.setView([userLat, userLng], 13);
+    marker.setLatLng([userLat, userLng]).bindPopup("<h6>\u4F60\u7684\u4F4D\u7F6E</h6>").openPopup();
+  });
+}
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreeMap</a> contributors'
+}).addTo(mapId);
+var greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+var redIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+var grayIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+}); // 取得json資料
+//-----------------------------------------------
 // 畫布按鈕開關 
 
 var toggle = document.querySelector('.c-sideButton');
