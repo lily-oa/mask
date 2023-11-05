@@ -29,51 +29,10 @@ function renderDay() {
 function init() {
   renderDay();
   getData();
-} //設定一個放資料的全域變數
-
-
-var data; //取得資料
-
-function getData() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json', true);
-  xhr.send(); //確定有無回傳資料
-
-  xhr.onload = function () {
-    //若是 ajax 的資料尚未載入則先呈現loading的畫面
-    document.querySelector('.c-loading').style.display = 'none'; //console.log(xhr.responseText);
-
-    data = JSON.parse(xhr.responseText); //預設顯示的值為臺北市
-
-    renderList("臺北市");
-  };
-} // 顯示回傳 xhr 資料並組字串寫入網頁中
-
-
-function renderList(city) {
-  var ary = data.features;
-  var str = ''; // console.log(ary);
-  //組字串
-
-  for (var i = 0; ary.length > i; i++) {
-    //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
-    if (ary[i].properties.county == city) {
-      str += "\n              <li class=\"card\">\n                <div class=\"card-body\">\n                  <h3 class=\"card-title\">".concat(ary[i].properties.name, "</h3>\n                  <p class='card-text'>").concat(ary[i].properties.address, "</p>\n                  <p>").concat(ary[i].properties.phone, "</p>\n                  <div class=\"d-flex mt-2\">\n                    <span class=\"h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5\">\u6210\u4EBA\u53E3\u7F69 ").concat(ary[i].properties.mask_adult, " \u500B</span>\n                    <span class=\"h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5\">\u5152\u7AE5\u53E3\u7F69 ").concat(ary[i].properties.mask_child, " \u500B</span>\n                  </div>\n                </div>\n              </li>\n            ");
-    }
-  }
-
-  document.querySelector('.list').innerHTML = str;
-}
-
-init(); //監聽 area 範圍若發生改變時將改變的值以參數方式傳給顯示網頁的函數
-
-document.querySelector('.p-select').addEventListener('change', function (e) {
-  // console.log(e.target.value);
-  //此函式是將回傳值寫入網頁中(台北、台中、高雄)
-  renderList(e.target.value);
-}); // 地圖 map
+} // 地圖 map
 // 設定一個地圖，把這地圖定位在 #mapId，
 // 先定位 center 座標，zoom 定位 16，zoom:縮放等級
+
 
 var mapId = L.map('mapId', {
   center: [25.04828, 121.51435],
@@ -82,7 +41,8 @@ var mapId = L.map('mapId', {
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mapId); // 紫色Icon(頁面載入時，沒有指定任何定位)
+}).addTo(mapId); //-------------------------------------1105
+// 紫色Icon(頁面載入時，沒有指定任何定位)
 
 var violetIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
@@ -100,7 +60,7 @@ if ('geolacation' in navigator) {
   navigator.geolocation.getCurrentPosition(function (position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
-    map.setView([userLat, userLng], 13);
+    mapId.setView([userLat, userLng], 13);
     marker.setLatLng([userLat, userLng]).bindPopup("<h6>\u4F60\u7684\u4F4D\u7F6E</h6>").openPopup();
   });
 }
@@ -131,8 +91,67 @@ var grayIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
-}); // 取得json資料
-//-----------------------------------------------
+}); //設定一個放資料的全域變數
+
+var data; //取得資料
+
+function getData() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json', true);
+  xhr.send(); //確定有無回傳資料
+
+  xhr.onload = function () {
+    //若是 ajax 的資料尚未載入則先呈現loading的畫面
+    document.querySelector('.c-loading').style.display = 'none'; //console.log(xhr.responseText);
+
+    data = JSON.parse(xhr.responseText).features;
+
+    for (var i = 0; data.length > i; i++) {
+      var iconColor = void 0;
+
+      if (data[i].properties.mask_adult > 0 && data[i].properties.mask_child > 0) {
+        iconColor = greenIcon;
+      } else if (data[i].properties.mask_adult === 0 && data[i].properties.mask_child > 0) {
+        iconColor = redIcon;
+      } else {
+        iconColor = greenIcon;
+      }
+
+      markers.addLayer(L.marker([data[i].geometry.coordinates[1], data[i].geometry.coordinates[0]], {
+        icon: iconColor
+      }).bindPopup("\n      <div>\n        <h6>".concat(data[i].properties.name, "</h6>\n        <span>").concat(data[i].properties.phone, "</span>\n      </div>\n      <p>\u6210\u4EBA\u53E3\u7F69: ").concat(data[i].properties.mask_adult, "</p>\n      <p>\u5152\u7AE5\u53E3\u7F69: ").concat(data[i].properties.mask_child, "</p>\n      <span>\u66F4\u65B0\u6642\u9593: ").concat(data[i].properties.updated, "</span>\n      ")));
+    }
+
+    mapId.addLayer(markers);
+  };
+}
+
+getData();
+var markers = new L.MarkerClusterGroup().addTo(mapId); //----------------------------------------1105
+// 顯示回傳 xhr 資料並組字串寫入網頁中
+
+function renderList(city) {
+  var ary = data.features;
+  var str = ''; // console.log(ary);
+  //組字串
+
+  for (var i = 0; ary.length > i; i++) {
+    //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
+    if (ary[i].properties.county == city) {
+      str += "\n              <li class=\"card\">\n                <div class=\"card-body\">\n                  <h3 class=\"card-title\">".concat(ary[i].properties.name, "</h3>\n                  <p class='card-text'>").concat(ary[i].properties.address, "</p>\n                  <p>").concat(ary[i].properties.phone, "</p>\n                  <div class=\"d-flex mt-2\">\n                    <span class=\"h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5\">\u6210\u4EBA\u53E3\u7F69 ").concat(ary[i].properties.mask_adult, " \u500B</span>\n                    <span class=\"h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5\">\u5152\u7AE5\u53E3\u7F69 ").concat(ary[i].properties.mask_child, " \u500B</span>\n                  </div>\n                </div>\n              </li>\n            ");
+    }
+  }
+
+  document.querySelector('.list').innerHTML = str;
+}
+
+init(); //監聽 area 範圍若發生改變時將改變的值以參數方式傳給顯示網頁的函數
+
+document.querySelector('.p-select').addEventListener('change', function (e) {
+  // console.log(e.target.value);
+  //此函式是將回傳值寫入網頁中(台北、台中、高雄)
+  renderList(e.target.value);
+}); //-----------------------------------------------
 // 畫布按鈕開關 
 
 var toggle = document.querySelector('.c-sideButton');
