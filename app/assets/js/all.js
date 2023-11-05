@@ -32,6 +32,72 @@ function init(){
   getData();
 }
 
+// 地圖 map
+// 設定一個地圖，把這地圖定位在 #mapId，
+// 先定位 center 座標，zoom 定位 16，zoom:縮放等級
+const mapId = L.map('mapId', {
+  center: [25.04828, 121.51435],
+  zoom: 16
+});
+
+// 告訴電腦你要誰的圖資
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mapId);
+
+//-------------------------------------1105
+// 紫色Icon(頁面載入時，沒有指定任何定位)
+const violetIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shoadowSize: [41, 41]
+});
+
+const marker = L.marker([0, 0], {icon:violetIcon}).addTo(mapId);
+
+//定位使用者位置
+if('geolacation' in navigator){
+  navigator.geolocation.getCurrentPosition(position => {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
+    mapId.setView([userLat, userLng], 13);
+    marker.setLatLng([userLat, userLng]).bindPopup(
+      `<h6>你的位置</h6>`
+    ).openPopup();
+  });
+}
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreeMap</a> contributors'
+}).addTo(mapId);
+const greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize:[25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+const redIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize:[25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+const grayIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize:[25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
 //設定一個放資料的全域變數
 let data;
 
@@ -46,12 +112,39 @@ function getData(){
     document.querySelector('.c-loading').style.display = 'none';
     //console.log(xhr.responseText);
     
-    data = JSON.parse(xhr.responseText);
-     //預設顯示的值為臺北市
-    renderList("臺北市");
+    data = JSON.parse(xhr.responseText).features;
+    for(let i=0; data.length>i; i++){
+      let iconColor;
+      if(data[i].properties.mask_adult > 0 && data[i].properties.mask_child > 0){
+        iconColor = greenIcon;
+      }else if(data[i].properties.mask_adult === 0 && data[i].properties.mask_child > 0){
+        iconColor = redIcon;
+      }else{
+        iconColor = greenIcon;
+      }
+      markers.addLayer(L.marker([data[i].geometry.coordinates[1],data[i].geometry.coordinates[0]], {icon: iconColor})
+      .bindPopup(
+      `
+      <div>
+        <h6>${data[i].properties.name}</h6>
+        <span>${data[i].properties.phone}</span>
+      </div>
+      <p>成人口罩: ${data[i].properties.mask_adult}</p>
+      <p>兒童口罩: ${data[i].properties.mask_child}</p>
+      <span>更新時間: ${data[i].properties.updated}</span>
+      `
+      
+    ));
+    }
+    mapId.addLayer(markers);
+    
   }
 }
 
+getData();
+let markers = new L.MarkerClusterGroup().addTo(mapId);
+
+//----------------------------------------1105
 // 顯示回傳 xhr 資料並組字串寫入網頁中
 function renderList(city){
   let ary = data.features;
@@ -87,74 +180,6 @@ document.querySelector('.p-select').addEventListener('change', function(e){
   //此函式是將回傳值寫入網頁中(台北、台中、高雄)
   renderList(e.target.value);
 });
-
-
-// 地圖 map
-// 設定一個地圖，把這地圖定位在 #mapId，
-// 先定位 center 座標，zoom 定位 16，zoom:縮放等級
-const mapId = L.map('mapId', {
-  center: [25.04828, 121.51435],
-  zoom: 16
-});
-
-// 告訴電腦你要誰的圖資
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(mapId);
-
-// 紫色Icon(頁面載入時，沒有指定任何定位)
-const violetIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shoadowSize: [41, 41]
-});
-
-const marker = L.marker([0, 0], {icon:violetIcon}).addTo(mapId);
-
-//定位使用者位置
-if('geolacation' in navigator){
-  navigator.geolocation.getCurrentPosition(position => {
-    userLat = position.coords.latitude;
-    userLng = position.coords.longitude;
-    map.setView([userLat, userLng], 13);
-    marker.setLatLng([userLat, userLng]).bindPopup(
-      `<h6>你的位置</h6>`
-    ).openPopup();
-  });
-}
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreeMap</a> contributors'
-}).addTo(mapId);
-const greenIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-const redIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-const grayIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-// 取得json資料
 
 //-----------------------------------------------
 // 畫布按鈕開關 
