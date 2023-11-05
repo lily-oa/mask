@@ -53,7 +53,7 @@ const violetIcon = new L.Icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shoadowSize: [41, 41]
+  shadowSize: [41, 41]
 });
 
 const marker = L.marker([0, 0], {icon:violetIcon}).addTo(mapId);
@@ -101,7 +101,7 @@ const grayIcon = new L.Icon({
 //設定一個放資料的全域變數
 let data;
 
-//取得資料
+//取得 JSON 資料
 function getData(){
   const xhr = new XMLHttpRequest();
   xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json', true);
