@@ -50,7 +50,7 @@ var violetIcon = new L.Icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shoadowSize: [41, 41]
+  shadowSize: [41, 41]
 });
 var marker = L.marker([0, 0], {
   icon: violetIcon
@@ -93,7 +93,7 @@ var grayIcon = new L.Icon({
   shadowSize: [41, 41]
 }); //設定一個放資料的全域變數
 
-var data; //取得資料
+var data; //取得 JSON 資料
 
 function getData() {
   var xhr = new XMLHttpRequest();
