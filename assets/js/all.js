@@ -123,36 +123,46 @@ function getData() {
     }
 
     mapId.addLayer(markers);
+    addCountyList();
   };
 }
 
 getData();
-var markers = new L.MarkerClusterGroup().addTo(mapId); //----------------------------------------1105
-// 顯示回傳 xhr 資料並組字串寫入網頁中
+var markers = new L.MarkerClusterGroup().addTo(mapId); //----------------------------------------1106
+// 加入城市 option
 
-function renderList(city) {
-  var ary = data.features;
-  var str = ''; // console.log(ary);
-  //組字串
+var county = document.querySelector('.county');
+var town = document.querySelector('.town'); //county.addEventListener('change', filterCountryList);
+//town.addEventListener('change', filterTownList);
 
-  for (var i = 0; ary.length > i; i++) {
-    //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
-    if (ary[i].properties.county == city) {
-      str += "\n              <li class=\"card\">\n                <div class=\"card-body\">\n                  <h3 class=\"card-title\">".concat(ary[i].properties.name, "</h3>\n                  <p class='card-text'>").concat(ary[i].properties.address, "</p>\n                  <p>").concat(ary[i].properties.phone, "</p>\n                  <div class=\"d-flex mt-2\">\n                    <span class=\"h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5\">\u6210\u4EBA\u53E3\u7F69 ").concat(ary[i].properties.mask_adult, " \u500B</span>\n                    <span class=\"h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5\">\u5152\u7AE5\u53E3\u7F69 ").concat(ary[i].properties.mask_child, " \u500B</span>\n                  </div>\n                </div>\n              </li>\n            ");
+function addCountyList() {
+  var countryName = new Set();
+  var countryList = data.filter(function (item) {
+    return !countryName.has(item.properties.county) ? countryName.add(item.properties.county) : false;
+  });
+  var countryStr = '';
+  countryStr += "<option value=\"\" disabled selected> -- \u8ACB\u9078\u64C7 -- </option>";
+  countryList.forEach(function (item) {
+    if (item.properties.county !== '') {
+      countryStr += "\n        <option value=\"".concat(item.properties.county, "\">").concat(item.properties.county, "</option>\n      ");
     }
-  }
+  });
+  county.innerHTML = countryStr;
+} // 城市 chang
 
-  document.querySelector('.list').innerHTML = str;
-}
 
-init(); //監聽 area 範圍若發生改變時將改變的值以參數方式傳給顯示網頁的函數
+function filterCountyList(e) {
+  var countryVal = e.target.value;
+  var allTown = [];
+  data.forEach(function (item) {
+    if (item.properties.county === countryVal) {
+      allTown.push(item);
+    }
+  });
+} //------------------------------------------1106
 
-document.querySelector('.p-select').addEventListener('change', function (e) {
-  // console.log(e.target.value);
-  //此函式是將回傳值寫入網頁中(台北、台中、高雄)
-  renderList(e.target.value);
-}); //-----------------------------------------------
-// 畫布按鈕開關 
+
+init(); // 畫布按鈕開關 
 
 var toggle = document.querySelector('.c-sideButton');
 var Psidebar = document.querySelector('.p-sidebar');
