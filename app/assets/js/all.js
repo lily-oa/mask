@@ -137,51 +137,53 @@ function getData(){
     ));
     }
     mapId.addLayer(markers);
-    
+    addCountyList();
+
   }
 }
 
 getData();
 let markers = new L.MarkerClusterGroup().addTo(mapId);
 
-//----------------------------------------1105
-// 顯示回傳 xhr 資料並組字串寫入網頁中
-function renderList(city){
-  let ary = data.features;
-  let str = '';
-  // console.log(ary);
-  //組字串
-  for(let i = 0; ary.length>i ; i++){
-    //設定area區域的顯示規則，若抓取的資料和傳入的參數一樣就將資料顯示在網頁上
-    if(ary[i].properties.county == city){
-      str += `
-              <li class="card">
-                <div class="card-body">
-                  <h3 class="card-title">${ary[i].properties.name}</h3>
-                  <p class='card-text'>${ary[i].properties.address}</p>
-                  <p>${ary[i].properties.phone}</p>
-                  <div class="d-flex mt-2">
-                    <span class="h-flex-1 badge rounded-pill bg-info py-2 fs-sm-6 fs-md-5">成人口罩 ${ary[i].properties.mask_adult} 個</span>
-                    <span class="h-flex-1 badge rounded-pill bg-warning py-2 ms-2 fs-sm-6 fs-md-5">兒童口罩 ${ary[i].properties.mask_child} 個</span>
-                  </div>
-                </div>
-              </li>
-            `
+//----------------------------------------1106
+// 加入城市 option
+let county = document.querySelector('.county');
+let town = document.querySelector('.town');
+//county.addEventListener('change', filterCountryList);
+//town.addEventListener('change', filterTownList);
+
+function addCountyList(){
+  let countryName = new Set();
+  let countryList = data.filter(item => !countryName.has(item.properties.county) ? countryName.add(item.properties.county) : false);
+  let countryStr = '';
+  countryStr += `<option value="" disabled selected> -- 請選擇 -- </option>`;
+  countryList.forEach(item => {
+    if(item.properties.county !== ''){
+      countryStr += `
+        <option value="${item.properties.county}">${item.properties.county}</option>
+      `
     }
-  }
-  document.querySelector('.list').innerHTML = str;
+  });
+  county.innerHTML = countryStr;
 }
 
+// 城市 chang
+function filterCountyList(e){
+  let countryVal = e.target.value;
+  let allTown = [];
+  data.forEach(item => {
+    if(item.properties.county === countryVal){
+      allTown.push(item);
+    }
+  });
+  
+
+}
+
+
+//------------------------------------------1106
+
 init();
-
-//監聽 area 範圍若發生改變時將改變的值以參數方式傳給顯示網頁的函數
-document.querySelector('.p-select').addEventListener('change', function(e){
-  // console.log(e.target.value);
-  //此函式是將回傳值寫入網頁中(台北、台中、高雄)
-  renderList(e.target.value);
-});
-
-//-----------------------------------------------
 // 畫布按鈕開關 
 
 let toggle = document.querySelector('.c-sideButton');
