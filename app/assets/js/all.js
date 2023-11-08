@@ -167,7 +167,7 @@ function addCountyList(){
   county.innerHTML = countryStr;
 }
 
-// 城市 chang
+// 城市 chang 加入城鄉
 function filterCountyList(e){
   let countryVal = e.target.value;
   let allTown = [];
@@ -176,8 +176,56 @@ function filterCountyList(e){
       allTown.push(item);
     }
   });
-  
+  addTownList(allTown);
 
+}
+
+// 加入城鄉
+  function addTownList(allTown){
+    let townName = new Set();
+    let townList = allTown.filter(item => !townName.has(item.properties.town) ? townName.add(item.properties.town) : false);
+    let townStr = ''
+    townList.forEach(item => {
+      townStr += `
+        <option value="${item.properties.town}">${item.properties.town}</option>
+      `
+    });
+    town.innerHTML = townStr;
+  }
+
+// 顯示城鄉資料
+function filterTownList(e){
+  let geoData = {};
+  let filteredTown = [];
+  data.forEach(item => {
+    if(item.properties.town === e.target.value){
+      filteredTown.push(item);
+      geoData = item
+    }
+  });
+  geo(geoData);
+}
+
+//------------------------------1108
+// 更新資料
+function updateList(townList){
+  let str = '';
+  str += `
+    <div class="d-flex flex-colum justify-content-center align-items-center mb-3">
+      
+    </div>
+  `
+}
+
+//-------------------------------1108
+
+function geo(geoData){
+  let name = geoData.properties.town;
+  mapId.setView([geoData.geometry.coordinates[1],geoData[i].geometry.coordinates[0]], 11);
+  L.marker([geoData.geometry.coordinates[1],geoData[i].geometry.coordinates[0]])
+  .addTo(mapId)
+  .bindPopup(name)
+  .openPopup();
 }
 
 
