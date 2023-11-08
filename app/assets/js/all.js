@@ -149,8 +149,8 @@ let markers = new L.MarkerClusterGroup().addTo(mapId);
 // 加入城市 option
 let county = document.querySelector('.county');
 let town = document.querySelector('.town');
-//county.addEventListener('change', filterCountryList);
-//town.addEventListener('change', filterTownList);
+county.addEventListener('change', filterCountyList);
+town.addEventListener('change', filterTownList);
 
 function addCountyList(){
   let countryName = new Set();
@@ -177,7 +177,7 @@ function filterCountyList(e){
     }
   });
   addTownList(allTown);
-
+  updateList(allTown);
 }
 
 // 加入城鄉
@@ -208,21 +208,25 @@ function filterTownList(e){
 
 //------------------------------1108
 // 更新資料
+let list = document.querySelector('.list');
 function updateList(townList){
   let str = '';
   str += `
     <div class="d-flex flex-colum justify-content-center align-items-center mb-3">
-      
+      <h4 class="text-center mb-4">
+          取得口罩的藥局有<span class="text-success">${townList.lenth}</span>家
+      </h4>
     </div>
   `
+  list.innerHTML = str;
 }
 
 //-------------------------------1108
 
 function geo(geoData){
   let name = geoData.properties.town;
-  mapId.setView([geoData.geometry.coordinates[1],geoData[i].geometry.coordinates[0]], 11);
-  L.marker([geoData.geometry.coordinates[1],geoData[i].geometry.coordinates[0]])
+  mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11); 
+  L.marker([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]])
   .addTo(mapId)
   .bindPopup(name)
   .openPopup();
