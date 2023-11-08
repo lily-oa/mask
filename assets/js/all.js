@@ -106,20 +106,20 @@ function getData() {
 
     data = JSON.parse(xhr.responseText).features;
 
-    for (var _i = 0; data.length > _i; _i++) {
+    for (var i = 0; data.length > i; i++) {
       var iconColor = void 0;
 
-      if (data[_i].properties.mask_adult > 0 && data[_i].properties.mask_child > 0) {
+      if (data[i].properties.mask_adult > 0 && data[i].properties.mask_child > 0) {
         iconColor = greenIcon;
-      } else if (data[_i].properties.mask_adult === 0 && data[_i].properties.mask_child > 0) {
+      } else if (data[i].properties.mask_adult === 0 && data[i].properties.mask_child > 0) {
         iconColor = redIcon;
       } else {
         iconColor = greenIcon;
       }
 
-      markers.addLayer(L.marker([data[_i].geometry.coordinates[1], data[_i].geometry.coordinates[0]], {
+      markers.addLayer(L.marker([data[i].geometry.coordinates[1], data[i].geometry.coordinates[0]], {
         icon: iconColor
-      }).bindPopup("\n      <div>\n        <h6>".concat(data[_i].properties.name, "</h6>\n        <span>").concat(data[_i].properties.phone, "</span>\n      </div>\n      <p>\u6210\u4EBA\u53E3\u7F69: ").concat(data[_i].properties.mask_adult, "</p>\n      <p>\u5152\u7AE5\u53E3\u7F69: ").concat(data[_i].properties.mask_child, "</p>\n      <span>\u66F4\u65B0\u6642\u9593: ").concat(data[_i].properties.updated, "</span>\n      ")));
+      }).bindPopup("\n      <div>\n        <h6>".concat(data[i].properties.name, "</h6>\n        <span>").concat(data[i].properties.phone, "</span>\n      </div>\n      <p>\u6210\u4EBA\u53E3\u7F69: ").concat(data[i].properties.mask_adult, "</p>\n      <p>\u5152\u7AE5\u53E3\u7F69: ").concat(data[i].properties.mask_child, "</p>\n      <span>\u66F4\u65B0\u6642\u9593: ").concat(data[i].properties.updated, "</span>\n      ")));
     }
 
     mapId.addLayer(markers);
@@ -132,8 +132,9 @@ var markers = new L.MarkerClusterGroup().addTo(mapId); //-----------------------
 // 加入城市 option
 
 var county = document.querySelector('.county');
-var town = document.querySelector('.town'); //county.addEventListener('change', filterCountryList);
-//town.addEventListener('change', filterTownList);
+var town = document.querySelector('.town');
+county.addEventListener('change', filterCountyList);
+town.addEventListener('change', filterTownList);
 
 function addCountyList() {
   var countryName = new Set();
@@ -160,6 +161,7 @@ function filterCountyList(e) {
     }
   });
   addTownList(allTown);
+  updateList(allTown);
 } // 加入城鄉
 
 
@@ -190,16 +192,19 @@ function filterTownList(e) {
 // 更新資料
 
 
+var list = document.querySelector('.list');
+
 function updateList(townList) {
   var str = '';
-  str += "\n    <div class=\"d-flex flex-colum justify-content-center align-items-center mb-3\">\n      \n    </div>\n  ";
+  str += "\n    <div class=\"d-flex flex-colum justify-content-center align-items-center mb-3\">\n      <h4 class=\"text-center mb-4\">\n          \u53D6\u5F97\u53E3\u7F69\u7684\u85E5\u5C40\u6709<span class=\"text-success\">".concat(townList.lenth, "</span>\u5BB6\n      </h4>\n    </div>\n  ");
+  list.innerHTML = str;
 } //-------------------------------1108
 
 
 function geo(geoData) {
   var name = geoData.properties.town;
-  mapId.setView([geoData.geometry.coordinates[1], geoData[i].geometry.coordinates[0]], 11);
-  L.marker([geoData.geometry.coordinates[1], geoData[i].geometry.coordinates[0]]).addTo(mapId).bindPopup(name).openPopup();
+  mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11);
+  L.marker([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]]).addTo(mapId).bindPopup(name).openPopup();
 } //------------------------------------------1106
 
 
