@@ -126,7 +126,7 @@ function getData(){
       .bindPopup(
       `
       <div>
-        <h6>${data[i].properties.name}</h6>
+        <h4 class="mb-1">${data[i].properties.name}</h4>
         <span>${data[i].properties.phone}</span>
       </div>
       <p>成人口罩: ${data[i].properties.mask_adult}</p>
@@ -138,7 +138,7 @@ function getData(){
     }
     mapId.addLayer(markers);
     addCountyList();
-
+    updateList(data);
   }
 }
 
@@ -146,12 +146,14 @@ getData();
 let markers = new L.MarkerClusterGroup().addTo(mapId);
 
 //----------------------------------------1106
-// 加入城市 option
+
 let county = document.querySelector('.county');
 let town = document.querySelector('.town');
 county.addEventListener('change', filterCountyList);
 town.addEventListener('change', filterTownList);
-
+// 加入城市 option
+//「陣列（Array）」的元素不會重複，可以使用 Set
+//Set 的特色是有 has() 這個方法，可以快速判斷該 Set 中是否包含某個元素，重點不是讓我們把 Set 中的元素取出來用。
 function addCountyList(){
   let countryName = new Set();
   let countryList = data.filter(item => !countryName.has(item.properties.county) ? countryName.add(item.properties.county) : false);
@@ -167,7 +169,7 @@ function addCountyList(){
   county.innerHTML = countryStr;
 }
 
-// 城市 chang 加入城鄉
+// 顯示城市資料，城市 chang
 function filterCountyList(e){
   let countryVal = e.target.value;
   let allTown = [];
@@ -180,7 +182,7 @@ function filterCountyList(e){
   updateList(allTown);
 }
 
-// 加入城鄉
+// 加入地區
   function addTownList(allTown){
     let townName = new Set();
     let townList = allTown.filter(item => !townName.has(item.properties.town) ? townName.add(item.properties.town) : false);
@@ -193,7 +195,7 @@ function filterCountyList(e){
     town.innerHTML = townStr;
   }
 
-// 顯示城鄉資料
+// 顯示地區資料
 function filterTownList(e){
   let geoData = {};
   let filteredTown = [];
@@ -209,20 +211,46 @@ function filterTownList(e){
 //------------------------------1108
 // 更新資料
 let list = document.querySelector('.list');
+
 function updateList(townList){
   let str = '';
   str += `
-    <div class="d-flex flex-colum justify-content-center align-items-center mb-3">
+    <div class="d-flex flex-colum justify-content-center align-items-center mt-3">
       <h4 class="text-center mb-4">
-          取得口罩的藥局有<span class="text-success">${townList.lenth}</span>家
+          取得口罩的藥局有<span class="text-success">${townList.length}</span>家
       </h4>
     </div>
   `
+  townList.forEach(item =>{
+    str += `
+    <div class="card text-center mb-2 mx-2 table-bordered">
+      <div class="card-header">
+        ${item.properties.name}
+      </div>
+      <div class="card-body d-flex align-items-start flex-column">
+        <div>
+          <i class="fas fa-map-marker-alt geoIcon text-danger"></i>
+          <span class="mb-2 ml-2">${item.properties.address}</span>
+        </div>
+        <div class="mt-3">
+          <i class="fas fa-phone text-success"></i>
+          <span>${item.properties.phone}</span>
+        </div>
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-around">
+        <div class="p-2 rounded-pill btn btn-secondary btn-sm">成人: ${item.properties.mask_adult}</div>
+        <div class="p-2 rounded-circle btn btn-success marker_icon btn-sm forward" data-locate="${[item.geometry.coordinates[1], item.geometry.coordinates[0]]}" data-name="${item.properties.name}">前往</div>
+        <div class="p-2 rounded-pill btn btn-secondary btn-sm">兒童: ${item.properties.mask_child}</div>
+      </div>
+  </div>
+  
+    `
+  });
   list.innerHTML = str;
 }
 
 //-------------------------------1108
-
+//geoData為地區資料的參數
 function geo(geoData){
   let name = geoData.properties.town;
   mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11); 
@@ -231,7 +259,19 @@ function geo(geoData){
   .bindPopup(name)
   .openPopup();
 }
-
+$(list).delegate(`.marker_icon`, `click`, function (e) {
+  let tempdata = e.target.dataset.locate;
+  let tempName = e.target.dataset.name;
+  let str = tempdata.split(",");
+  let numA = parseFloat(str[0]);
+  let numB = parseFloat(str[1]);
+  let location = [numA, numB];
+  mapId.setView(location, 20);
+    L.marker(location)
+    .addTo(mapId)
+    .bindPopup(tempName)
+    .openPopup();
+});
 
 //------------------------------------------1106
 
