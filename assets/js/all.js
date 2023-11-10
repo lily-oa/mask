@@ -119,22 +119,24 @@ function getData() {
 
       markers.addLayer(L.marker([data[i].geometry.coordinates[1], data[i].geometry.coordinates[0]], {
         icon: iconColor
-      }).bindPopup("\n      <div>\n        <h6>".concat(data[i].properties.name, "</h6>\n        <span>").concat(data[i].properties.phone, "</span>\n      </div>\n      <p>\u6210\u4EBA\u53E3\u7F69: ").concat(data[i].properties.mask_adult, "</p>\n      <p>\u5152\u7AE5\u53E3\u7F69: ").concat(data[i].properties.mask_child, "</p>\n      <span>\u66F4\u65B0\u6642\u9593: ").concat(data[i].properties.updated, "</span>\n      ")));
+      }).bindPopup("\n      <div>\n        <h4 class=\"mb-1\">".concat(data[i].properties.name, "</h4>\n        <span>").concat(data[i].properties.phone, "</span>\n      </div>\n      <p>\u6210\u4EBA\u53E3\u7F69: ").concat(data[i].properties.mask_adult, "</p>\n      <p>\u5152\u7AE5\u53E3\u7F69: ").concat(data[i].properties.mask_child, "</p>\n      <span>\u66F4\u65B0\u6642\u9593: ").concat(data[i].properties.updated, "</span>\n      ")));
     }
 
     mapId.addLayer(markers);
     addCountyList();
+    updateList(data);
   };
 }
 
 getData();
 var markers = new L.MarkerClusterGroup().addTo(mapId); //----------------------------------------1106
-// 加入城市 option
 
 var county = document.querySelector('.county');
 var town = document.querySelector('.town');
 county.addEventListener('change', filterCountyList);
-town.addEventListener('change', filterTownList);
+town.addEventListener('change', filterTownList); // 加入城市 option
+//「陣列（Array）」的元素不會重複，可以使用 Set
+//Set 的特色是有 has() 這個方法，可以快速判斷該 Set 中是否包含某個元素，重點不是讓我們把 Set 中的元素取出來用。
 
 function addCountyList() {
   var countryName = new Set();
@@ -149,7 +151,7 @@ function addCountyList() {
     }
   });
   county.innerHTML = countryStr;
-} // 城市 chang 加入城鄉
+} // 顯示城市資料，城市 chang
 
 
 function filterCountyList(e) {
@@ -162,7 +164,7 @@ function filterCountyList(e) {
   });
   addTownList(allTown);
   updateList(allTown);
-} // 加入城鄉
+} // 加入地區
 
 
 function addTownList(allTown) {
@@ -175,7 +177,7 @@ function addTownList(allTown) {
     townStr += "\n        <option value=\"".concat(item.properties.town, "\">").concat(item.properties.town, "</option>\n      ");
   });
   town.innerHTML = townStr;
-} // 顯示城鄉資料
+} // 顯示地區資料
 
 
 function filterTownList(e) {
@@ -196,17 +198,31 @@ var list = document.querySelector('.list');
 
 function updateList(townList) {
   var str = '';
-  str += "\n    <div class=\"d-flex flex-colum justify-content-center align-items-center mb-3\">\n      <h4 class=\"text-center mb-4\">\n          \u53D6\u5F97\u53E3\u7F69\u7684\u85E5\u5C40\u6709<span class=\"text-success\">".concat(townList.lenth, "</span>\u5BB6\n      </h4>\n    </div>\n  ");
+  str += "\n    <div class=\"d-flex flex-colum justify-content-center align-items-center mt-3\">\n      <h4 class=\"text-center mb-4\">\n          \u53D6\u5F97\u53E3\u7F69\u7684\u85E5\u5C40\u6709<span class=\"text-success\">".concat(townList.length, "</span>\u5BB6\n      </h4>\n    </div>\n  ");
+  townList.forEach(function (item) {
+    str += "\n    <div class=\"card text-center mb-2 mx-2 table-bordered\">\n      <div class=\"card-header\">\n        ".concat(item.properties.name, "\n      </div>\n      <div class=\"card-body d-flex align-items-start flex-column\">\n        <div>\n          <i class=\"fas fa-map-marker-alt geoIcon text-danger\"></i>\n          <span class=\"mb-2 ml-2\">").concat(item.properties.address, "</span>\n        </div>\n        <div class=\"mt-3\">\n          <i class=\"fas fa-phone text-success\"></i>\n          <span>").concat(item.properties.phone, "</span>\n        </div>\n      </div>\n      <div class=\"card-footer text-muted d-flex justify-content-around\">\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u6210\u4EBA: ").concat(item.properties.mask_adult, "</div>\n        <div class=\"p-2 rounded-circle btn btn-success marker_icon btn-sm forward\" data-locate=\"").concat([item.geometry.coordinates[1], item.geometry.coordinates[0]], "\" data-name=\"").concat(item.properties.name, "\">\u524D\u5F80</div>\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u5152\u7AE5: ").concat(item.properties.mask_child, "</div>\n      </div>\n  </div>\n  \n    ");
+  });
   list.innerHTML = str;
 } //-------------------------------1108
+//geoData為地區資料的參數
 
 
 function geo(geoData) {
   var name = geoData.properties.town;
   mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11);
   L.marker([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]]).addTo(mapId).bindPopup(name).openPopup();
-} //------------------------------------------1106
+}
 
+$(list).delegate(".marker_icon", "click", function (e) {
+  var tempdata = e.target.dataset.locate;
+  var tempName = e.target.dataset.name;
+  var str = tempdata.split(",");
+  var numA = parseFloat(str[0]);
+  var numB = parseFloat(str[1]);
+  var location = [numA, numB];
+  mapId.setView(location, 20);
+  L.marker(location).addTo(mapId).bindPopup(tempName).openPopup();
+}); //------------------------------------------1106
 
 init(); // 畫布按鈕開關 
 
