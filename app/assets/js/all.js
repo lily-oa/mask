@@ -59,7 +59,7 @@ const violetIcon = new L.Icon({
 const marker = L.marker([0, 0], {icon:violetIcon}).addTo(mapId);
 
 //定位使用者位置
-if('geolacation' in navigator){
+if('geolocation' in navigator){
   navigator.geolocation.getCurrentPosition(position => {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
@@ -99,12 +99,12 @@ const grayIcon = new L.Icon({
 });
 
 //設定一個放資料的全域變數
-let data;
+let data = [];
 
 //取得 JSON 資料
 function getData(){
   const xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json', true);
+  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json');
   xhr.send();
   //確定有無回傳資料
   xhr.onload = function(){
@@ -185,7 +185,7 @@ function filterCountyList(e){
 // 加入地區
   function addTownList(allTown){
     let townName = new Set();
-    let townList = allTown.filter(item => !townName.has(item.properties.town) ? townName.add(item.properties.town) : false);
+    let townList = allTown.filter(item => !townName.has(item.properties.town) ? townName.add(item.properties.town): false);
     let townStr = ''
     townList.forEach(item => {
       townStr += `
@@ -205,6 +205,7 @@ function filterTownList(e){
       geoData = item
     }
   });
+  updateList(filteredTown);
   geo(geoData);
 }
 
