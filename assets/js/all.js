@@ -56,7 +56,7 @@ var marker = L.marker([0, 0], {
   icon: violetIcon
 }).addTo(mapId); //定位使用者位置
 
-if ('geolacation' in navigator) {
+if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(function (position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
@@ -93,11 +93,11 @@ var grayIcon = new L.Icon({
   shadowSize: [41, 41]
 }); //設定一個放資料的全域變數
 
-var data; //取得 JSON 資料
+var data = []; //取得 JSON 資料
 
 function getData() {
   var xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json', true);
+  xhr.open('get', 'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json');
   xhr.send(); //確定有無回傳資料
 
   xhr.onload = function () {
@@ -189,6 +189,7 @@ function filterTownList(e) {
       geoData = item;
     }
   });
+  updateList(filteredTown);
   geo(geoData);
 } //------------------------------1108
 // 更新資料
