@@ -64,7 +64,7 @@ if('geolocation' in navigator){
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
     mapId.setView([userLat, userLng], 13);
-    marker.setLatLng([userLat, userLng]).bindPopup(
+    marker.setLatLng([userLat,userLng]).bindPopup(
       `<h6>你的位置</h6>`
     ).openPopup();
   });
@@ -133,7 +133,6 @@ function getData(){
       <p>兒童口罩: ${data[i].properties.mask_child}</p>
       <span>更新時間: ${data[i].properties.updated}</span>
       `
-      
     ));
     }
     mapId.addLayer(markers);
