@@ -35,10 +35,7 @@ function init(){
 // 地圖 map
 // 設定一個地圖，把這地圖定位在 #mapId，
 // 先定位 center 座標，zoom 定位 16，zoom:縮放等級
-const mapId = L.map('mapId', {
-  center: [25.04828, 121.51435],
-  zoom: 16
-});
+const mapId = L.map('mapId', { zoomControl: false }).setView([0, 0], 16);
 
 // 告訴電腦你要誰的圖資
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -56,7 +53,8 @@ const violetIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-const marker = L.marker([0, 0], {icon:violetIcon}).addTo(mapId);
+const marker = L.marker([0, 0] , {icon:violetIcon}).addTo(mapId);
+
 
 //定位使用者位置
 if('geolocation' in navigator){
@@ -65,8 +63,8 @@ if('geolocation' in navigator){
     userLng = position.coords.longitude;
     mapId.setView([userLat, userLng], 13);
     marker.setLatLng([userLat,userLng]).bindPopup(
-      `<h6>你的位置</h6>`
-    ).openPopup();
+      `<h6>你的位置</h6>`)
+      .openPopup();
   });
 }
 
