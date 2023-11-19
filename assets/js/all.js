@@ -39,7 +39,7 @@ var mapId = L.map('mapId', {
 }).setView([0, 0], 16); // 告訴電腦你要誰的圖資
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors:<a href="https://github.com/fred39392001">ABow_Chen</a>'
 }).addTo(mapId); //-------------------------------------1105
 // 紫色Icon(頁面載入時，沒有指定任何定位)
 
@@ -59,13 +59,13 @@ if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(function (position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
-    mapId.setView([userLat, userLng], 13);
+    map.setView([userLat, userLng], 13);
     marker.setLatLng([userLat, userLng]).bindPopup("<h6>\u4F60\u7684\u4F4D\u7F6E</h6>").openPopup();
   });
 }
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreeMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mapId);
 var greenIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -83,7 +83,7 @@ var redIcon = new L.Icon({
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
-var grayIcon = new L.Icon({
+var greyIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
