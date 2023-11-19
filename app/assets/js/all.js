@@ -39,7 +39,7 @@ const mapId = L.map('mapId', { zoomControl: false }).setView([0, 0], 16);
 
 // 告訴電腦你要誰的圖資
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors:<a href="https://github.com/fred39392001">ABow_Chen</a>'
 }).addTo(mapId);
 
 //-------------------------------------1105
@@ -57,24 +57,25 @@ const marker = L.marker([0, 0] , {icon:violetIcon}).addTo(mapId);
 
 
 //定位使用者位置
-if('geolocation' in navigator){
+if ('geolocation' in navigator) {
   navigator.geolocation.getCurrentPosition(position => {
-    userLat = position.coords.latitude;
-    userLng = position.coords.longitude;
-    mapId.setView([userLat, userLng], 13);
-    marker.setLatLng([userLat,userLng]).bindPopup(
+  userLat = position.coords.latitude;
+  userLng = position.coords.longitude;
+  map.setView([userLat, userLng], 13);
+  marker.setLatLng([userLat,userLng]).bindPopup(
       `<h6>你的位置</h6>`)
       .openPopup();
   });
-}
+} 
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreeMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(mapId);
+
 const greenIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
+  iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
@@ -82,15 +83,15 @@ const greenIcon = new L.Icon({
 const redIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
+  iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
-const grayIcon = new L.Icon({
+const greyIcon = new L.Icon({
   iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize:[25, 41],
+  iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
@@ -251,7 +252,7 @@ function updateList(townList){
 //geoData為地區資料的參數
 function geo(geoData){
   let name = geoData.properties.town;
-  mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11); 
+  mapId.setView([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]], 11);
   L.marker([geoData.geometry.coordinates[1], geoData.geometry.coordinates[0]])
   .addTo(mapId)
   .bindPopup(name)
@@ -265,10 +266,10 @@ $(list).delegate(`.marker_icon`, `click`, function (e) {
   let numB = parseFloat(str[1]);
   let location = [numA, numB];
   mapId.setView(location, 20);
-    L.marker(location)
-    .addTo(mapId)
-    .bindPopup(tempName)
-    .openPopup();
+      L.marker(location)
+      .addTo(mapId)
+      .bindPopup(tempName)
+      .openPopup();
 });
 
 //------------------------------------------1106
