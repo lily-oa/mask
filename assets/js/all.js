@@ -35,9 +35,8 @@ function init() {
 
 
 var mapId = L.map('mapId', {
-  center: [25.04828, 121.51435],
-  zoom: 16
-}); // 告訴電腦你要誰的圖資
+  zoomControl: false
+}).setView([0, 0], 16); // 告訴電腦你要誰的圖資
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
