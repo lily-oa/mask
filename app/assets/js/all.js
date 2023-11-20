@@ -140,7 +140,7 @@ function getData(){
   }
 }
 
-getData();
+
 let markers = new L.MarkerClusterGroup().addTo(mapId);
 
 //----------------------------------------1106
