@@ -127,7 +127,6 @@ function getData() {
   };
 }
 
-getData();
 var markers = new L.MarkerClusterGroup().addTo(mapId); //----------------------------------------1106
 
 var county = document.querySelector('.county');
