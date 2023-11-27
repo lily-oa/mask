@@ -143,8 +143,6 @@ function getData(){
 
 let markers = new L.MarkerClusterGroup().addTo(mapId);
 
-//----------------------------------------1106
-
 let county = document.querySelector('.county');
 let town = document.querySelector('.town');
 county.addEventListener('change', filterCountyList);
@@ -207,7 +205,6 @@ function filterTownList(e){
   geo(geoData);
 }
 
-//------------------------------1108
 // 更新資料
 let list = document.querySelector('.list');
 
@@ -248,7 +245,6 @@ function updateList(townList){
   list.innerHTML = str;
 }
 
-//-------------------------------1108
 //geoData為地區資料的參數
 function geo(geoData){
   let name = geoData.properties.town;
@@ -272,7 +268,6 @@ $(list).delegate(`.marker_icon`, `click`, function (e) {
       .openPopup();
 });
 
-//------------------------------------------1106
 
 init();
 // 畫布按鈕開關 
@@ -284,4 +279,5 @@ toggle.onclick = function(e){
   Psidebar.classList.toggle('panelClose');
 }
 
-//--------------------------------------------------
+//------------------------------------------11/28
+const search = document.querySelector('#search');
