@@ -226,10 +226,26 @@ var Psidebar = document.querySelector('.p-sidebar');
 
 toggle.onclick = function (e) {
   Psidebar.classList.toggle('panelClose');
-}; //------------------------------------------11/28
+}; //------------------------------------------11/29 search
 
 
 var search = document.querySelector('#search');
+
+var searchAddress = function searchAddress(e) {
+  if (e.target.nodeName !== 'A') {
+    return;
+  }
+
+  var searchText = document.querySelector('#searchText').value;
+
+  if (searchText === '') {
+    alert('請輸入資料，無法搜尋空白!');
+  } else {
+    var pharmacyData = search.pharmacyData.filter(function (element) {
+      return element.properties.address.match(searchText);
+    }); //upDateSidebar(pharmacyData);
+  }
+};
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
