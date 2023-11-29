@@ -279,5 +279,18 @@ toggle.onclick = function(e){
   Psidebar.classList.toggle('panelClose');
 }
 
-//------------------------------------------11/28
+//------------------------------------------11/29 search
 const search = document.querySelector('#search');
+
+const searchAddress = (e) => {
+  if(e.target.nodeName !== 'A'){
+    return;
+  }
+  const searchText = document.querySelector('#searchText').value;
+  if(searchText === ''){
+    alert('請輸入資料，無法搜尋空白!');
+  }else{
+    const pharmacyData = search.pharmacyData.filter((element) => element.properties.address.match(searchText),);
+    //upDateSidebar(pharmacyData);
+  }
+};
