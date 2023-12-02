@@ -229,9 +229,11 @@ toggle.onclick = function (e) {
 }; //------------------------------------------11/29 search
 
 
-var search = document.querySelector('#search');
+var sideData = document.querySelector('#sideData');
 
 var searchAddress = function searchAddress(e) {
+  var search = document.querySelector('#search');
+
   if (e.target.nodeName !== 'A') {
     return;
   }
@@ -243,9 +245,20 @@ var searchAddress = function searchAddress(e) {
   } else {
     var pharmacyData = search.pharmacyData.filter(function (element) {
       return element.properties.address.match(searchText);
-    }); //upDateSidebar(pharmacyData);
+    });
+    upDateSidebar(pharmacyData);
   }
 };
+
+function upDateSidebar(importData) {
+  var str = '';
+  importData.forEach(function (item) {
+    str += "\n    <div class=\"card text-center mb-2 mx-2 table-bordered\">\n      <div class=\"card-header\">\n        ".concat(item.properties.name, "\n      </div>\n      <div class=\"card-body d-flex align-items-start flex-column\">\n        <div>\n          <i class=\"fas fa-map-marker-alt geoIcon text-danger\"></i>\n          <span class=\"mb-2 ml-2\">").concat(item.properties.address, "</span>\n        </div>\n        <div class=\"mt-3\">\n          <i class=\"fas fa-phone text-success\"></i>\n          <span>").concat(item.properties.phone, "</span>\n        </div>\n      </div>\n      <div class=\"card-footer text-muted d-flex justify-content-around\">\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u6210\u4EBA: ").concat(item.properties.mask_adult, "</div>\n        <div class=\"p-2 rounded-circle btn btn-success marker_icon btn-sm forward\" data-locate=\"").concat([item.geometry.coordinates[1], item.geometry.coordinates[0]], "\" data-name=\"").concat(item.properties.name, "\">\u524D\u5F80</div>\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u5152\u7AE5: ").concat(item.properties.mask_child, "</div>\n      </div>\n  </div>\n    ");
+  });
+  list.innerHTML = str;
+}
+
+search.addEventListener('click', searchAddress);
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
