@@ -230,10 +230,9 @@ toggle.onclick = function (e) {
 
 
 var sideData = document.querySelector('#sideData');
+var search = document.querySelector('#search');
 
 var searchAddress = function searchAddress(e) {
-  var search = document.querySelector('#search');
-
   if (e.target.nodeName !== 'A') {
     return;
   }
