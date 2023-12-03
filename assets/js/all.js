@@ -229,7 +229,6 @@ toggle.onclick = function (e) {
 }; //------------------------------------------11/29 search
 
 
-var sideData = document.querySelector('#sideData');
 var search = document.querySelector('#search');
 
 var searchAddress = function searchAddress(e) {
@@ -242,20 +241,40 @@ var searchAddress = function searchAddress(e) {
   if (searchText === '') {
     alert('請輸入資料，無法搜尋空白!');
   } else {
-    var pharmacyData = search.pharmacyData.filter(function (element) {
+    var townList = search.data.filter(function (element) {
       return element.properties.address.match(searchText);
     });
-    upDateSidebar(pharmacyData);
+    updateList(townList);
   }
-};
+}; // function upDateSidebar(importData) {
+//   let str = '';
+//   importData.forEach(item =>{
+//     str += `
+//     <div class="card text-center mb-2 mx-2 table-bordered">
+//       <div class="card-header">
+//         ${item.properties.name}
+//       </div>
+//       <div class="card-body d-flex align-items-start flex-column">
+//         <div>
+//           <i class="fas fa-map-marker-alt geoIcon text-danger"></i>
+//           <span class="mb-2 ml-2">${item.properties.address}</span>
+//         </div>
+//         <div class="mt-3">
+//           <i class="fas fa-phone text-success"></i>
+//           <span>${item.properties.phone}</span>
+//         </div>
+//       </div>
+//       <div class="card-footer text-muted d-flex justify-content-around">
+//         <div class="p-2 rounded-pill btn btn-secondary btn-sm">成人: ${item.properties.mask_adult}</div>
+//         <div class="p-2 rounded-circle btn btn-success marker_icon btn-sm forward" data-locate="${[item.geometry.coordinates[1], item.geometry.coordinates[0]]}" data-name="${item.properties.name}">前往</div>
+//         <div class="p-2 rounded-pill btn btn-secondary btn-sm">兒童: ${item.properties.mask_child}</div>
+//       </div>
+//   </div>
+//     `
+//   });
+//   list.innerHTML = str;
+// }
 
-function upDateSidebar(importData) {
-  var str = '';
-  importData.forEach(function (item) {
-    str += "\n    <div class=\"card text-center mb-2 mx-2 table-bordered\">\n      <div class=\"card-header\">\n        ".concat(item.properties.name, "\n      </div>\n      <div class=\"card-body d-flex align-items-start flex-column\">\n        <div>\n          <i class=\"fas fa-map-marker-alt geoIcon text-danger\"></i>\n          <span class=\"mb-2 ml-2\">").concat(item.properties.address, "</span>\n        </div>\n        <div class=\"mt-3\">\n          <i class=\"fas fa-phone text-success\"></i>\n          <span>").concat(item.properties.phone, "</span>\n        </div>\n      </div>\n      <div class=\"card-footer text-muted d-flex justify-content-around\">\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u6210\u4EBA: ").concat(item.properties.mask_adult, "</div>\n        <div class=\"p-2 rounded-circle btn btn-success marker_icon btn-sm forward\" data-locate=\"").concat([item.geometry.coordinates[1], item.geometry.coordinates[0]], "\" data-name=\"").concat(item.properties.name, "\">\u524D\u5F80</div>\n        <div class=\"p-2 rounded-pill btn btn-secondary btn-sm\">\u5152\u7AE5: ").concat(item.properties.mask_child, "</div>\n      </div>\n  </div>\n    ");
-  });
-  list.innerHTML = str;
-}
 
 search.addEventListener('click', searchAddress);
 "use strict";
