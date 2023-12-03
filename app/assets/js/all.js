@@ -142,7 +142,6 @@ function getData(){
 
 
 let markers = new L.MarkerClusterGroup().addTo(mapId);
-
 let county = document.querySelector('.county');
 let town = document.querySelector('.town');
 county.addEventListener('change', filterCountyList);
@@ -281,12 +280,9 @@ toggle.onclick = function(e){
 
 //------------------------------------------11/29 search
 
-
-const sideData = document.querySelector('#sideData');
 const search = document.querySelector('#search');
 
 const searchAddress = (e) => {
-  
   if(e.target.nodeName !== 'A'){
     return;
   }
@@ -294,39 +290,39 @@ const searchAddress = (e) => {
   if(searchText === ''){
     alert('請輸入資料，無法搜尋空白!');
   }else{
-    const pharmacyData = search.pharmacyData.filter((element) => element.properties.address.match(searchText));
-    upDateSidebar(pharmacyData);
+    const townList = search.data.filter((element) => element.properties.address.match(searchText));
+    updateList(townList);
   }
 };
 
-function upDateSidebar(importData) {
-  let str = '';
-  importData.forEach(item =>{
-    str += `
-    <div class="card text-center mb-2 mx-2 table-bordered">
-      <div class="card-header">
-        ${item.properties.name}
-      </div>
-      <div class="card-body d-flex align-items-start flex-column">
-        <div>
-          <i class="fas fa-map-marker-alt geoIcon text-danger"></i>
-          <span class="mb-2 ml-2">${item.properties.address}</span>
-        </div>
-        <div class="mt-3">
-          <i class="fas fa-phone text-success"></i>
-          <span>${item.properties.phone}</span>
-        </div>
-      </div>
-      <div class="card-footer text-muted d-flex justify-content-around">
-        <div class="p-2 rounded-pill btn btn-secondary btn-sm">成人: ${item.properties.mask_adult}</div>
-        <div class="p-2 rounded-circle btn btn-success marker_icon btn-sm forward" data-locate="${[item.geometry.coordinates[1], item.geometry.coordinates[0]]}" data-name="${item.properties.name}">前往</div>
-        <div class="p-2 rounded-pill btn btn-secondary btn-sm">兒童: ${item.properties.mask_child}</div>
-      </div>
-  </div>
-    `
-  });
-  list.innerHTML = str;
+// function upDateSidebar(importData) {
+//   let str = '';
+//   importData.forEach(item =>{
+//     str += `
+//     <div class="card text-center mb-2 mx-2 table-bordered">
+//       <div class="card-header">
+//         ${item.properties.name}
+//       </div>
+//       <div class="card-body d-flex align-items-start flex-column">
+//         <div>
+//           <i class="fas fa-map-marker-alt geoIcon text-danger"></i>
+//           <span class="mb-2 ml-2">${item.properties.address}</span>
+//         </div>
+//         <div class="mt-3">
+//           <i class="fas fa-phone text-success"></i>
+//           <span>${item.properties.phone}</span>
+//         </div>
+//       </div>
+//       <div class="card-footer text-muted d-flex justify-content-around">
+//         <div class="p-2 rounded-pill btn btn-secondary btn-sm">成人: ${item.properties.mask_adult}</div>
+//         <div class="p-2 rounded-circle btn btn-success marker_icon btn-sm forward" data-locate="${[item.geometry.coordinates[1], item.geometry.coordinates[0]]}" data-name="${item.properties.name}">前往</div>
+//         <div class="p-2 rounded-pill btn btn-secondary btn-sm">兒童: ${item.properties.mask_child}</div>
+//       </div>
+//   </div>
+//     `
+//   });
+//   list.innerHTML = str;
   
-}
+// }
 
 search.addEventListener('click', searchAddress);
