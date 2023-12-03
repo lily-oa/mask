@@ -230,6 +230,7 @@ toggle.onclick = function (e) {
 
 
 var search = document.querySelector('#search');
+search.addEventListener('click', searchAddress);
 
 var searchAddress = function searchAddress(e) {
   if (e.target.nodeName !== 'A') {
@@ -244,7 +245,7 @@ var searchAddress = function searchAddress(e) {
     var townList = search.data.filter(function (element) {
       return element.properties.address.match(searchText);
     });
-    updateList(townList);
+    getData(townList);
   }
 }; // function upDateSidebar(importData) {
 //   let str = '';
@@ -274,9 +275,6 @@ var searchAddress = function searchAddress(e) {
 //   });
 //   list.innerHTML = str;
 // }
-
-
-search.addEventListener('click', searchAddress);
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
