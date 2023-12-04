@@ -226,7 +226,7 @@ var Psidebar = document.querySelector('.p-sidebar');
 
 toggle.onclick = function (e) {
   Psidebar.classList.toggle('panelClose');
-}; //------------------------------------------11/29 search
+}; //------------------------------------------12/4 search
 
 
 var search = document.querySelector('#search');
