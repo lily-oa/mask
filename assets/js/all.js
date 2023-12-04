@@ -230,7 +230,6 @@ toggle.onclick = function (e) {
 
 
 var search = document.querySelector('#search');
-search.addEventListener('click', searchAddress);
 
 var searchAddress = function searchAddress(e) {
   if (e.target.nodeName !== 'A') {
@@ -248,6 +247,8 @@ var searchAddress = function searchAddress(e) {
     getData(townList);
   }
 };
+
+search.addEventListener('click', searchAddress);
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
