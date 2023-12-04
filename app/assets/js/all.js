@@ -281,7 +281,7 @@ toggle.onclick = function(e){
 //------------------------------------------12/4 search
 
 let search = document.querySelector('#search');
-search.addEventListener('click', searchAddress);
+
 
 const searchAddress = (e) => {
   if(e.target.nodeName !== 'A'){
@@ -297,4 +297,4 @@ const searchAddress = (e) => {
   }
 };
 
-
+search.addEventListener('click', searchAddress);
