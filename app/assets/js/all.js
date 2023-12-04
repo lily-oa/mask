@@ -278,7 +278,7 @@ toggle.onclick = function(e){
   Psidebar.classList.toggle('panelClose');
 }
 
-//------------------------------------------11/29 search
+//------------------------------------------12/4 search
 
 let search = document.querySelector('#search');
 search.addEventListener('click', searchAddress);
