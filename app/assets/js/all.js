@@ -292,7 +292,7 @@ const searchAddress = (e) => {
   if(searchText === ''){
     alert('請輸入資料，無法搜尋空白!');
   }else{
-    const townList = search.data.filter((element) => element.properties.address.match(searchText));
+    const townList = data.filter((element) => element.properties.address.match(searchText));
     getData(townList);
   }
 };
