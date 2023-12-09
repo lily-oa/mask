@@ -293,9 +293,12 @@ const searchAddress = (e) => {
     alert('請輸入資料，無法搜尋空白!');
   }else{
     const townList = data.filter((element) => element.properties.address.match(searchText));
-  console.log(townList);
-
-  //getData(townList);
+  //以下查看有沒有搜尋到藥局的資料
+  //console.log(townList);
+  
+  //篩選出資料後，需將資料渲染至畫面（側邊欄），目前第 296 行執行的 getData 是取得全部藥局資料及處理地圖 marker 的部分，
+  //應改為 updateList 才是渲染側邊欄藥局資料的 function~
+  updateList(townList);
   }
 };
 
