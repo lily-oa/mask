@@ -244,7 +244,7 @@ var searchAddress = function searchAddress(e) {
     var townList = data.filter(function (element) {
       return element.properties.address.match(searchText);
     });
-    getData(townList);
+    console.log(townList); //getData(townList);
   }
 };
 
