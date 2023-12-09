@@ -293,7 +293,9 @@ const searchAddress = (e) => {
     alert('請輸入資料，無法搜尋空白!');
   }else{
     const townList = data.filter((element) => element.properties.address.match(searchText));
-    getData(townList);
+  console.log(townList);
+
+  //getData(townList);
   }
 };
 
