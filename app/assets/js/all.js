@@ -1,4 +1,3 @@
-
 document.write('<img>');
 
 //判斷日期(顯示星期幾)，並讓它呈現國字的樣式
@@ -81,7 +80,7 @@ const greenIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 const redIcon = new L.Icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-2x-red.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
