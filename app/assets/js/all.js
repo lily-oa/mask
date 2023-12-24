@@ -224,7 +224,7 @@ function updateList(townList){
       <div class="card-body d-flex align-items-start flex-column">
         <div>
           <a class="fas fa-map-marker-alt geoIcon text-danger" href="https://www.google.com.tw/maps/dir//${item.properties.address}" target="_blank"></a>
-          <span class="mb-2 ml-2">${item.properties.address}</span>
+          <span class="mb-2 ml-2">${item.properties.address}</span>s
         </div>
         <div class="mt-3">
           <i class="fas fa-phone text-success"></i>
