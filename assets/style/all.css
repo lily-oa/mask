@@ -12781,6 +12781,10 @@ html, body {
   text-align: center;
 }
 
+.card-body a {
+  font-size: 3rem;
+}
+
 /* ------c-loading----- */
 .c-loading {
   position: absolute;
